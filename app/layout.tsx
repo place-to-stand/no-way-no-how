@@ -9,10 +9,37 @@ const fontSans = FontSans({
   variable: '--font-sans',
 })
 
+const title = 'no way no how — indie rock from Austin, TX'
+const description =
+  'no way no how is the Austin, TX project of Jason Desiderio: melancholic indie rock with 90s pop grit and subtle Americana undertones. Listen on Bandcamp, Spotify, and Apple Music.'
+
 export const metadata: Metadata = {
-  title: 'no way no how',
-  description:
-    'Listen to the music of no way no how on Spotify, Apple Music, and more.',
+  metadataBase: new URL('https://nowayno.how'),
+  title,
+  description,
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName: 'no way no how',
+    title,
+    description,
+    locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Jason Desiderio of no way no how playing electric guitar',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/og-image.jpg'],
+  },
 }
 
 export default function RootLayout({
