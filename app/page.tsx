@@ -8,7 +8,7 @@ const jsonLd = {
   url: 'https://nowayno.how/',
   image: 'https://nowayno.how/og-image.jpg',
   description:
-    'Austin-based musician Jason Desiderio, whose music blends melancholic indie rock with 90s pop grit and subtle Americana undertones.',
+    "Melancholic indie rock from Austin-based musician Jason Desiderio, for anyone who's moved cities or tried to slow down.",
   genre: ['Indie Rock', 'Alternative'],
   foundingLocation: {
     '@type': 'Place',
@@ -72,9 +72,8 @@ export default function Home() {
           & friends in Austin, TX
         </div>
         <p className='mt-2 max-w-xl text-balance'>
-          Melancholic indie rock with 90s pop grit and subtle Americana
-          undertones. Latest single &ldquo;Faster &amp; Faster&rdquo; out May
-          2025, following &ldquo;Build Our Home&rdquo; in 2024.
+          Melancholic indie rock for anyone who&rsquo;s moved cities or tried to
+          slow down. Latest single: &ldquo;Faster &amp; Faster&rdquo; (2025).
         </p>
       </div>
       <div className='grid w-full max-w-[900px] gap-6 md:grid-cols-2'>
