@@ -93,6 +93,7 @@ export default function Home() {
           src={JasonGuitar}
           alt='Jason Desiderio of no way no how playing electric guitar'
           sizes='(min-width: 768px) 438px, 100vw'
+          quality={60}
           preload
           className='size-full rounded-xl object-cover'
         />

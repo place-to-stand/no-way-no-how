@@ -11,7 +11,7 @@ const fontSans = FontSans({
 
 const title = 'no way no how — indie rock from Austin, TX'
 const description =
-  'no way no how is the Austin, TX project of Jason Desiderio: melancholic indie rock with 90s pop grit and subtle Americana undertones. Listen on Bandcamp, Spotify, and Apple Music.'
+  'Austin, TX indie rock from Jason Desiderio: melancholic songs with 90s pop grit and subtle Americana undertones. Listen on Bandcamp, Spotify, and Apple Music.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nowayno.how'),
