@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import { SiteNav } from './components/site-nav'
+import { tracks } from './lib/content'
 import JasonGuitar from './jason-guitar.jpg'
 
 const jsonLd = {
@@ -24,6 +26,10 @@ const jsonLd = {
     '@type': 'Person',
     name: 'Jason Desiderio',
     url: 'https://jasondesiderio.com/',
+    jobTitle: 'Musician and songwriter',
+    description:
+      'Austin, TX musician who writes and records no way no how with friends.',
+    sameAs: ['https://jasondesiderio.com/'],
   },
   email: 'hello@thegoodfornothings.club',
   sameAs: [
@@ -74,6 +80,11 @@ export default function Home() {
         <p className='mt-2 max-w-xl text-balance'>
           Melancholic indie rock for anyone who&rsquo;s moved cities or tried to
           slow down. Latest single: &ldquo;Faster &amp; Faster&rdquo; (2025).
+        </p>
+        <p className='max-w-xl text-balance'>
+          Jason writes the songs and records them with a rotating cast of
+          friends. Stream them below, buy them on Bandcamp, or get in touch
+          about shows, press, and licensing.
         </p>
       </div>
       <div className='grid w-full max-w-[900px] gap-6 md:grid-cols-2'>
@@ -142,6 +153,19 @@ export default function Home() {
           </a>{' '}
         </div>
       </div>
+      <section aria-labelledby='songs' className='flex flex-col gap-2'>
+        <h2 id='songs' className='text-2xl font-semibold'>
+          Songs
+        </h2>
+        <ul>
+          {tracks.map(t => (
+            <li key={t.name}>
+              &ldquo;{t.name}&rdquo; &middot; {t.kind}, {t.released}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <SiteNav />
     </main>
   )
 }
