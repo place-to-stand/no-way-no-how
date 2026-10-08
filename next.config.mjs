@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enables ensureStatic (see app/layout.tsx) and the Cache Components model
+  cacheComponents: true,
   images: {
     // The photo never renders wider than ~1080 device pixels, and Next.js uses
     // the largest device size as the <img src> fallback that crawlers fetch.

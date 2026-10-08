@@ -4,6 +4,9 @@ import { Outfit as FontSans } from 'next/font/google'
 import { cn } from './lib/utils'
 import './styles/globals.css'
 
+// Fail the build if anything makes a route render per request
+export const ensureStatic = 'navigation'
+
 const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
