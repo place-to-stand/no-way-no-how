@@ -8,6 +8,9 @@ const nextConfig = {
     deviceSizes: [640, 828, 1080],
     formats: ['image/avif', 'image/webp'],
     qualities: [60],
+    // Statically imported images get content-hashed URLs, so cache
+    // optimized variants for 31 days instead of the 4-hour default
+    minimumCacheTTL: 2678400,
   },
 }
 
