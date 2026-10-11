@@ -89,72 +89,79 @@ export default function Home() {
         </p>
       </div>
       <div className='grid w-full max-w-[900px] gap-6 md:grid-cols-2'>
-        <iframe
-          title='no way no how on Spotify'
-          style={{ borderRadius: '12px' }}
-          src='https://open.spotify.com/embed/artist/0Hhn7jlCTbqNyAOrI458SR?utm_source=generator'
-          width='100%'
-          height='352'
-          frameBorder='0'
-          allowFullScreen={false}
-          allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-          loading='lazy'
-        />
-        <Image
-          src={JasonGuitar}
-          alt='Jason Desiderio of no way no how playing electric guitar'
-          sizes='(min-width: 768px) 438px, 100vw'
-          quality={60}
-          preload
-          className='size-full rounded-xl object-cover'
-        />
-        <div>
-          <a
-            href='https://nowaynohow.bandcamp.com/'
-            className='underline underline-offset-2 hover:no-underline'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Bandcamp
-          </a>{' '}
-          &bull;{' '}
-          <a
-            href='https://open.spotify.com/artist/0Hhn7jlCTbqNyAOrI458SR?si=3CrQhwPhToiFOQFg1ivtFQ'
-            className='underline underline-offset-2 hover:no-underline'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Spotify
-          </a>{' '}
-          &bull;{' '}
-          <a
-            href='https://music.apple.com/us/artist/no-way-no-how/1738953726'
-            className='underline underline-offset-2 hover:no-underline'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Apple Music
-          </a>
+        <div className='flex flex-col gap-2'>
+          <iframe
+            title='no way no how on Spotify'
+            style={{ borderRadius: '12px' }}
+            src='https://open.spotify.com/embed/artist/0Hhn7jlCTbqNyAOrI458SR?utm_source=generator'
+            width='100%'
+            height='352'
+            frameBorder='0'
+            allowFullScreen={false}
+            allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+            loading='lazy'
+          />
+          <div>
+            <a
+              href='https://nowaynohow.bandcamp.com/'
+              className='underline underline-offset-2 hover:no-underline'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Bandcamp
+            </a>{' '}
+            &bull;{' '}
+            <a
+              href='https://open.spotify.com/artist/0Hhn7jlCTbqNyAOrI458SR?si=3CrQhwPhToiFOQFg1ivtFQ'
+              className='underline underline-offset-2 hover:no-underline'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Spotify
+            </a>{' '}
+            &bull;{' '}
+            <a
+              href='https://music.apple.com/us/artist/no-way-no-how/1738953726'
+              className='underline underline-offset-2 hover:no-underline'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Apple Music
+            </a>
+          </div>
         </div>
-        <div>
-          <a
-            href='https://www.instagram.com/nowaynohowband/'
-            className='underline underline-offset-2 hover:no-underline'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Instagram
-          </a>{' '}
-          &bull;{' '}
-          <a
-            href='mailto:jason@thegoodfornothings.club'
-            className='underline underline-offset-2 hover:no-underline'
-          >
-            jason@thegoodfornothings.club
-          </a>{' '}
+        <div className='flex flex-col gap-2'>
+          <Image
+            src={JasonGuitar}
+            alt='Jason Desiderio of no way no how playing electric guitar'
+            sizes='(min-width: 768px) 438px, 100vw'
+            quality={60}
+            preload
+            className='w-full rounded-xl object-cover md:h-[352px]'
+          />
+          <div>
+            <a
+              href='https://www.instagram.com/nowaynohowband/'
+              className='underline underline-offset-2 hover:no-underline'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Instagram
+            </a>{' '}
+            &bull;{' '}
+            <a
+              href='mailto:jason@thegoodfornothings.club'
+              className='underline underline-offset-2 hover:no-underline'
+            >
+              jason@thegoodfornothings.club
+            </a>{' '}
+          </div>
         </div>
       </div>
-      <section aria-labelledby='releases' className='flex flex-col gap-6 md:gap-8'>
+      <section
+        aria-labelledby='releases'
+        className='flex flex-col gap-6 md:gap-8'
+      >
         <h2 id='releases' className='text-3xl font-semibold md:text-4xl'>
           Releases
         </h2>
