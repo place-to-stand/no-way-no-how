@@ -1,6 +1,13 @@
 import Image from 'next/image'
 import { tracks } from './lib/content'
+import BuildOurHome from './covers/build-our-home.jpg'
+import FasterAndFaster from './covers/faster-and-faster.jpg'
 import JasonGuitar from './jason-guitar.jpg'
+
+const covers = {
+  'Faster & Faster': FasterAndFaster,
+  'Build Our Home': BuildOurHome,
+}
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -151,10 +158,30 @@ export default function Home() {
         <h2 id='songs' className='text-2xl font-semibold'>
           Songs
         </h2>
-        <ul>
+        <ul className='grid grid-cols-2 gap-4 md:gap-6'>
           {tracks.map(t => (
             <li key={t.name}>
-              &ldquo;{t.name}&rdquo; &middot; {t.kind}, {t.released}
+              <a
+                href={t.href}
+                className='group flex flex-col items-center gap-2'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <Image
+                  src={covers[t.name as keyof typeof covers]}
+                  alt={`${t.name} cover art`}
+                  sizes='(min-width: 768px) 200px, 45vw'
+                  quality={60}
+                  className='aspect-square w-full max-w-[200px] rounded-xl object-cover'
+                />
+                <span>
+                  <span className='underline underline-offset-2 group-hover:no-underline'>
+                    {t.name}
+                  </span>
+                  <br />
+                  {t.kind}, {t.released}
+                </span>
+              </a>
             </li>
           ))}
         </ul>

@@ -23,7 +23,7 @@ The [homepage](${siteUrl}/) is also available as Markdown by requesting it with 
 
 ## Songs
 
-${tracks.map(t => `- "${t.name}" (${t.kind}, ${t.released})`).join('\n')}
+${tracks.map(t => `- [${t.name}](${t.href}) (${t.kind}, ${t.released})`).join('\n')}
 
 ## Listen
 

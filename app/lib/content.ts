@@ -23,8 +23,18 @@ export const socialLinks: Link[] = [
 ]
 
 export const tracks = [
-  { name: 'Faster & Faster', released: '2025', kind: 'Single' },
-  { name: 'Build Our Home', released: '2024', kind: 'Single' },
+  {
+    name: 'Faster & Faster',
+    released: '2025',
+    kind: 'Single',
+    href: 'https://nowaynohow.bandcamp.com/track/faster-faster',
+  },
+  {
+    name: 'Build Our Home',
+    released: '2024',
+    kind: 'Single',
+    href: 'https://nowaynohow.bandcamp.com/track/build-our-home',
+  },
 ]
 
 function absolute(href: string) {
@@ -44,7 +54,9 @@ export function homeMarkdown() {
     '> Indie rock by Jason Desiderio & friends in Austin, TX.',
     homeDescription,
     '## Songs',
-    tracks.map(t => `- "${t.name}" (${t.kind}, ${t.released})`).join('\n'),
+    tracks
+      .map(t => `- [${t.name}](${t.href}) (${t.kind}, ${t.released})`)
+      .join('\n'),
     '## Listen',
     linkList(listenLinks),
     '## Follow',
