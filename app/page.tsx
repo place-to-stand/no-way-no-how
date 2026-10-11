@@ -172,7 +172,7 @@ export default function Home() {
                   alt={`${t.name} cover art`}
                   sizes='(min-width: 768px) 200px, 45vw'
                   quality={60}
-                  className='aspect-square w-full max-w-[200px] rounded-xl object-cover'
+                  className='aspect-square w-full max-w-[200px] object-cover'
                 />
                 <span>
                   <span className='underline underline-offset-2 group-hover:no-underline'>
