@@ -4,10 +4,11 @@ import BuildOurHome from './covers/build-our-home.jpg'
 import FasterAndFaster from './covers/faster-and-faster.jpg'
 import JasonGuitar from './jason-guitar.jpg'
 
+// A 1px bar at the bottom of the text that fills upward into a highlight.
 const linkBase =
-  'underline decoration-current/30 underline-offset-4 transition-[text-decoration-color,text-underline-offset] duration-200 ease-out'
-const linkClass = `${linkBase} hover:decoration-current hover:underline-offset-2 focus-visible:decoration-current focus-visible:underline-offset-2`
-const groupLinkClass = `${linkBase} group-hover:decoration-current group-hover:underline-offset-2 group-focus-visible:decoration-current group-focus-visible:underline-offset-2`
+  '-mx-0.5 box-decoration-clone bg-linear-to-r from-neutral-950 to-neutral-950 bg-size-[100%_1px] bg-bottom bg-no-repeat px-0.5 transition-[background-size,color] duration-200 ease-out'
+const linkClass = `${linkBase} hover:bg-size-[100%_100%] hover:text-white focus-visible:bg-size-[100%_100%] focus-visible:text-white`
+const groupLinkClass = `${linkBase} group-hover:bg-size-[100%_100%] group-hover:text-white group-focus-visible:bg-size-[100%_100%] group-focus-visible:text-white`
 
 const covers = {
   'Faster & Faster': FasterAndFaster,
