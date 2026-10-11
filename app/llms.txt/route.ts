@@ -1,7 +1,5 @@
 import { email, listenLinks, siteUrl, tracks } from '../lib/content'
 
-export const dynamic = 'force-static'
-
 export function GET() {
   const body = `# no way no how
 
