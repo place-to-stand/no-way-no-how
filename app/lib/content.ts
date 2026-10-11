@@ -2,7 +2,7 @@
 // serves it as Markdown to agents that send `Accept: text/markdown`.
 
 export const siteUrl = 'https://nowayno.how'
-export const email = 'hello@thegoodfornothings.club'
+export const email = 'jason@thegoodfornothings.club'
 
 export type Link = { label: string; href: string }
 
@@ -84,15 +84,14 @@ export const contact: Page = {
     {
       heading: 'Email',
       paragraphs: [
-        `The best way to reach no way no how is by email at ${email}. Jason reads every message himself. Write in about shows, press, playlists, licensing a song, collaborating, or just to say a track meant something to you.`,
-        'Please include a little context about who you are and what you have in mind. There is no form on this site, and no mailing list to sign up for, so email is the one place to start a conversation.',
+        `Email ${email} about shows, press, playlists, licensing a song, or collaborating. A sentence or two about who you are and what you have in mind helps.`,
       ],
       links: [{ label: email, href: `mailto:${email}` }],
     },
     {
       heading: 'Elsewhere',
       paragraphs: [
-        'You can also follow along and send a message on Instagram, or buy music and leave a note through Bandcamp. The band is based in Austin, Texas, United States.',
+        'no way no how is based in Austin, Texas. You can also send a message on Instagram, or buy music and leave a note on Bandcamp.',
       ],
       links: [...socialLinks, listenLinks[0]],
     },
@@ -102,37 +101,24 @@ export const contact: Page = {
 export const privacy: Page = {
   path: '/privacy',
   title: 'Privacy policy',
-  description:
-    'What nowayno.how collects (very little), the third-party services it uses, and how to reach us about your data.',
+  description: 'What nowayno.how collects, which is very little.',
   sections: [
     {
       heading: 'The short version',
       paragraphs: [
-        'nowayno.how is a single-page band website. It has no accounts, no sign-up forms, no mailing list, and no advertising. We do not sell or share personal information.',
+        'nowayno.how has no accounts, forms, mailing list, or ads. We do not sell or share personal information.',
       ],
     },
     {
-      heading: 'Analytics',
+      heading: 'What is collected',
       paragraphs: [
-        'The site uses Vercel Web Analytics to count page views. It does not use cookies and does not track you across other websites. It records aggregate information such as the page visited, the referring site, country, browser, and device type, so we can see roughly how many people visit.',
+        "Vercel hosts the site and runs its cookie-free analytics, which count page views by page, referrer, country, browser, and device. The Spotify player on the homepage is covered by Spotify's own privacy policy.",
       ],
     },
     {
-      heading: 'Hosting',
+      heading: 'Questions',
       paragraphs: [
-        'The site is hosted on Vercel. Like any web host, Vercel processes standard request data, such as your IP address and browser user agent, to deliver pages and protect against abuse.',
-      ],
-    },
-    {
-      heading: 'Embedded content',
-      paragraphs: [
-        "The homepage embeds a Spotify player. Spotify may set cookies or collect data when the player loads or when you press play, under Spotify's own privacy policy. Links to Bandcamp, Apple Music, Instagram, and other sites are governed by those sites' policies once you leave nowayno.how.",
-      ],
-    },
-    {
-      heading: 'Email',
-      paragraphs: [
-        `If you email ${email}, we keep your message only to reply and do not add you to any list. To ask a question about your data or request deletion, email us at the same address.`,
+        `To ask about your data or request deletion, email ${email}.`,
       ],
       links: [{ label: email, href: `mailto:${email}` }],
     },

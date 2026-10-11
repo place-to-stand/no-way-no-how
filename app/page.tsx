@@ -31,7 +31,7 @@ const jsonLd = {
       'Austin, TX musician who writes and records no way no how with friends.',
     sameAs: ['https://jasondesiderio.com/'],
   },
-  email: 'hello@thegoodfornothings.club',
+  email: 'jason@thegoodfornothings.club',
   sameAs: [
     'https://nowaynohow.bandcamp.com/',
     'https://open.spotify.com/artist/0Hhn7jlCTbqNyAOrI458SR',
@@ -146,10 +146,10 @@ export default function Home() {
           </a>{' '}
           &bull;{' '}
           <a
-            href='mailto:hello@thegoodfornothings.club'
+            href='mailto:jason@thegoodfornothings.club'
             className='underline underline-offset-2 hover:no-underline'
           >
-            hello@thegoodfornothings.club
+            jason@thegoodfornothings.club
           </a>{' '}
         </div>
       </div>
