@@ -4,6 +4,11 @@ import BuildOurHome from './covers/build-our-home.jpg'
 import FasterAndFaster from './covers/faster-and-faster.jpg'
 import JasonGuitar from './jason-guitar.jpg'
 
+const linkBase =
+  'underline decoration-current/30 underline-offset-4 transition-[text-decoration-color,text-underline-offset] duration-200 ease-out'
+const linkClass = `${linkBase} hover:decoration-current hover:underline-offset-2 focus-visible:decoration-current focus-visible:underline-offset-2`
+const groupLinkClass = `${linkBase} group-hover:decoration-current group-hover:underline-offset-2 group-focus-visible:decoration-current group-focus-visible:underline-offset-2`
+
 const covers = {
   'Faster & Faster': FasterAndFaster,
   'Build Our Home': BuildOurHome,
@@ -75,7 +80,7 @@ export default function Home() {
           music by{' '}
           <a
             href='https://jasondesiderio.com/'
-            className='underline underline-offset-2 hover:no-underline'
+            className={linkClass}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -104,7 +109,7 @@ export default function Home() {
           <div>
             <a
               href='https://nowaynohow.bandcamp.com/'
-              className='underline underline-offset-2 hover:no-underline'
+              className={linkClass}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -113,7 +118,7 @@ export default function Home() {
             &bull;{' '}
             <a
               href='https://open.spotify.com/artist/0Hhn7jlCTbqNyAOrI458SR?si=3CrQhwPhToiFOQFg1ivtFQ'
-              className='underline underline-offset-2 hover:no-underline'
+              className={linkClass}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -122,7 +127,7 @@ export default function Home() {
             &bull;{' '}
             <a
               href='https://music.apple.com/us/artist/no-way-no-how/1738953726'
-              className='underline underline-offset-2 hover:no-underline'
+              className={linkClass}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -142,7 +147,7 @@ export default function Home() {
           <div>
             <a
               href='https://www.instagram.com/nowaynohowband/'
-              className='underline underline-offset-2 hover:no-underline'
+              className={linkClass}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -151,7 +156,7 @@ export default function Home() {
             &bull;{' '}
             <a
               href='mailto:jason@thegoodfornothings.club'
-              className='underline underline-offset-2 hover:no-underline'
+              className={linkClass}
             >
               jason@thegoodfornothings.club
             </a>{' '}
@@ -182,9 +187,7 @@ export default function Home() {
                   className='aspect-square w-full max-w-[200px] object-cover shadow-sm transition duration-200 ease-out group-hover:shadow-xl group-focus-visible:shadow-xl motion-safe:group-hover:-translate-y-1 motion-safe:group-focus-visible:-translate-y-1'
                 />
                 <span>
-                  <span className='underline underline-offset-2 group-hover:no-underline'>
-                    {t.name}
-                  </span>
+                  <span className={groupLinkClass}>{t.name}</span>
                   <br />
                   {t.kind}, {t.released}
                 </span>
