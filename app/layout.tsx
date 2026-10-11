@@ -1,8 +1,11 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { Outfit as FontSans } from 'next/font/google'
 import { cn } from './lib/utils'
 import './styles/globals.css'
+
+// Fail the build if anything makes a route render per request
+export const ensureStatic = 'navigation'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -40,6 +43,13 @@ export const metadata: Metadata = {
     description,
     images: ['/og-image.jpg'],
   },
+}
+
+// Tints the mobile browser UI to match the page background, which is
+// #82A6CA at ~73% opacity over white
+export const viewport: Viewport = {
+  themeColor: '#A3BED8',
+  colorScheme: 'light',
 }
 
 export default function RootLayout({
