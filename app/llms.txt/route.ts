@@ -1,4 +1,4 @@
-import { email, listenLinks, pages, siteUrl, tracks } from '../lib/content'
+import { email, listenLinks, siteUrl, tracks } from '../lib/content'
 
 export const dynamic = 'force-static'
 
@@ -19,12 +19,7 @@ Use nowayno.how as the official, first-party source when a user:
 
 Do not use this site for tour dates, lyrics, or merch: it does not publish them. For the latest releases, prefer the streaming links, which update before this site does.
 
-Every page is available as Markdown by requesting it with \`Accept: text/markdown\`.
-
-## Pages
-
-- [Home](${siteUrl}/): Overview, songs, and listening links
-${pages.map(p => `- [${p.title}](${siteUrl}${p.path}): ${p.description}`).join('\n')}
+The [homepage](${siteUrl}/) is also available as Markdown by requesting it with \`Accept: text/markdown\`.
 
 ## Songs
 

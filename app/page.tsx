@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { SiteNav } from './components/site-nav'
 import { tracks } from './lib/content'
 import JasonGuitar from './jason-guitar.jpg'
 
@@ -81,11 +80,6 @@ export default function Home() {
           Melancholic indie rock for anyone who&rsquo;s moved cities or tried to
           slow down. Latest single: &ldquo;Faster &amp; Faster&rdquo; (2025).
         </p>
-        <p className='max-w-xl text-balance'>
-          Jason writes the songs and records them with a rotating cast of
-          friends. Stream them below, buy them on Bandcamp, or get in touch
-          about shows, press, and licensing.
-        </p>
       </div>
       <div className='grid w-full max-w-[900px] gap-6 md:grid-cols-2'>
         <iframe
@@ -165,7 +159,6 @@ export default function Home() {
           ))}
         </ul>
       </section>
-      <SiteNav />
     </main>
   )
 }

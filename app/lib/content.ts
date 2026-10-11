@@ -1,5 +1,5 @@
-// Single source of truth for site copy. Pages render it as HTML, and proxy.ts
-// serves it as Markdown to agents that send `Accept: text/markdown`.
+// Site copy shared by the homepage, llms.txt, and the Markdown that proxy.ts
+// serves to agents that send `Accept: text/markdown`.
 
 export const siteUrl = 'https://nowayno.how'
 export const email = 'jason@thegoodfornothings.club'
@@ -27,69 +27,12 @@ export const tracks = [
   { name: 'Build Our Home', released: '2024', kind: 'Single' },
 ]
 
-export const pageLinks: Link[] = [{ label: 'About', href: '/about' }]
-
-export type Section = { heading: string; paragraphs: string[]; links?: Link[] }
-
-export type Page = {
-  path: string
-  title: string
-  description: string
-  sections: Section[]
-}
-
-export const about: Page = {
-  path: '/about',
-  title: 'About no way no how',
-  description:
-    'no way no how is the indie rock project of Austin, TX musician Jason Desiderio, recorded with friends.',
-  sections: [
-    {
-      heading: 'Who we are',
-      paragraphs: [
-        'no way no how is the indie rock project of Jason Desiderio, a musician based in Austin, Texas. Jason writes the songs and records them with a rotating group of friends, which is why every release is credited to "Jason Desiderio & friends."',
-        'The music is melancholic, guitar-driven indie rock and alternative. The songs are for anyone who has packed up and moved to a new city, or who has tried, and maybe failed, to slow their life down a little.',
-      ],
-    },
-    {
-      heading: 'Releases',
-      paragraphs: [
-        '"Build Our Home" came out as a single in April 2024. "Faster & Faster" followed as a single on May 2, 2025, and is the latest release. Both are streaming everywhere listed below.',
-      ],
-      links: listenLinks,
-    },
-    {
-      heading: 'More from Jason',
-      paragraphs: [
-        `Jason also writes about his other work on his personal site. For anything related to the band, email ${email}.`,
-      ],
-      links: [
-        { label: 'jasondesiderio.com', href: 'https://jasondesiderio.com/' },
-        { label: email, href: `mailto:${email}` },
-      ],
-    },
-  ],
-}
-
-export const pages = [about]
-
 function absolute(href: string) {
   return href.startsWith('/') ? `${siteUrl}${href}` : href
 }
 
 function linkList(links: Link[]) {
   return links.map(l => `- [${l.label}](${absolute(l.href)})`).join('\n')
-}
-
-export function pageToMarkdown(page: Page) {
-  const sections = page.sections.map(s =>
-    [
-      `## ${s.heading}`,
-      ...s.paragraphs,
-      ...(s.links ? [linkList(s.links)] : []),
-    ].join('\n\n')
-  )
-  return [`# ${page.title}`, `> ${page.description}`, ...sections].join('\n\n')
 }
 
 export const homeDescription =
@@ -109,7 +52,7 @@ export function homeMarkdown() {
     '## Contact',
     `Email [${email}](mailto:${email}) about shows, press, licensing, or anything else.`,
     '## More',
-    linkList([...pageLinks, { label: 'llms.txt', href: '/llms.txt' }]),
+    linkList([{ label: 'llms.txt', href: '/llms.txt' }]),
   ].join('\n\n')
 }
 

@@ -1,15 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import {
-  homeMarkdown,
-  notFoundMarkdown,
-  pageToMarkdown,
-  pages,
-} from './app/lib/content'
-
-const markdownByPath = new Map<string, () => string>([
-  ['/', homeMarkdown],
-  ...pages.map(p => [p.path, () => pageToMarkdown(p)] as const),
-])
+import { homeMarkdown, notFoundMarkdown } from './app/lib/content'
 
 // Quality value for a media type in an Accept header, or 0 if absent.
 function quality(accept: string, type: string) {
@@ -32,11 +22,11 @@ export function proxy(request: NextRequest) {
   if (!wantsMarkdown(request.headers.get('accept'))) return NextResponse.next()
 
   const path = request.nextUrl.pathname.replace(/\/+$/, '') || '/'
-  const render = markdownByPath.get(path)
+  const isHome = path === '/'
   return new NextResponse(
-    render ? render() : notFoundMarkdown(path.replace(/`/g, '')),
+    isHome ? homeMarkdown() : notFoundMarkdown(path.replace(/`/g, '')),
     {
-      status: render ? 200 : 404,
+      status: isHome ? 200 : 404,
       headers: {
         'Content-Type': 'text/markdown; charset=utf-8',
         Vary: 'Accept',
