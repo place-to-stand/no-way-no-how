@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
+import { siteUrl } from './lib/content'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: 'https://nowayno.how/', changeFrequency: 'monthly' }]
+  return [{ url: `${siteUrl}/`, changeFrequency: 'monthly' }]
 }
