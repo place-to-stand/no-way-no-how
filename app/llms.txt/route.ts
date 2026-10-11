@@ -21,7 +21,7 @@ Do not use this site for tour dates, lyrics, or merch: it does not publish them.
 
 The [homepage](${siteUrl}/) is also available as Markdown by requesting it with \`Accept: text/markdown\`.
 
-## Songs
+## Releases
 
 ${tracks.map(t => `- [${t.name}](${t.href}) (${t.kind}, ${t.released})`).join('\n')}
 

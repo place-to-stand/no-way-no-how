@@ -53,7 +53,7 @@ export function homeMarkdown() {
     '# no way no how',
     '> Indie rock by Jason Desiderio & friends in Austin, TX.',
     homeDescription,
-    '## Songs',
+    '## Releases',
     tracks
       .map(t => `- [${t.name}](${t.href}) (${t.kind}, ${t.released})`)
       .join('\n'),

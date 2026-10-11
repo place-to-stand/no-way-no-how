@@ -154,9 +154,9 @@ export default function Home() {
           </a>{' '}
         </div>
       </div>
-      <section aria-labelledby='songs' className='flex flex-col gap-6 md:gap-8'>
-        <h2 id='songs' className='text-3xl font-semibold md:text-4xl'>
-          Songs
+      <section aria-labelledby='releases' className='flex flex-col gap-6 md:gap-8'>
+        <h2 id='releases' className='text-3xl font-semibold md:text-4xl'>
+          Releases
         </h2>
         <ul className='grid grid-cols-2 gap-4 md:gap-6'>
           {tracks.map(t => (
