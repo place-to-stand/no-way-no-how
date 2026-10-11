@@ -27,11 +27,7 @@ export const tracks = [
   { name: 'Build Our Home', released: '2024', kind: 'Single' },
 ]
 
-export const pageLinks: Link[] = [
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Privacy', href: '/privacy' },
-]
+export const pageLinks: Link[] = [{ label: 'About', href: '/about' }]
 
 export type Section = { heading: string; paragraphs: string[]; links?: Link[] }
 
@@ -65,67 +61,17 @@ export const about: Page = {
     {
       heading: 'More from Jason',
       paragraphs: [
-        'Jason also writes about his other work on his personal site. For anything related to the band, the contact page is the fastest way to reach us.',
+        `Jason also writes about his other work on his personal site. For anything related to the band, email ${email}.`,
       ],
       links: [
         { label: 'jasondesiderio.com', href: 'https://jasondesiderio.com/' },
-        { label: 'Contact no way no how', href: '/contact' },
+        { label: email, href: `mailto:${email}` },
       ],
     },
   ],
 }
 
-export const contact: Page = {
-  path: '/contact',
-  title: 'Contact no way no how',
-  description:
-    'How to reach no way no how, the Austin, TX indie rock project of Jason Desiderio.',
-  sections: [
-    {
-      heading: 'Email',
-      paragraphs: [
-        `Email ${email} about shows, press, playlists, licensing a song, or collaborating. A sentence or two about who you are and what you have in mind helps.`,
-      ],
-      links: [{ label: email, href: `mailto:${email}` }],
-    },
-    {
-      heading: 'Elsewhere',
-      paragraphs: [
-        'no way no how is based in Austin, Texas. You can also send a message on Instagram, or buy music and leave a note on Bandcamp.',
-      ],
-      links: [...socialLinks, listenLinks[0]],
-    },
-  ],
-}
-
-export const privacy: Page = {
-  path: '/privacy',
-  title: 'Privacy policy',
-  description: 'What nowayno.how collects, which is very little.',
-  sections: [
-    {
-      heading: 'The short version',
-      paragraphs: [
-        'nowayno.how has no accounts, forms, mailing list, or ads. We do not sell or share personal information.',
-      ],
-    },
-    {
-      heading: 'What is collected',
-      paragraphs: [
-        "Vercel hosts the site and runs its cookie-free analytics, which count page views by page, referrer, country, browser, and device. The Spotify player on the homepage is covered by Spotify's own privacy policy.",
-      ],
-    },
-    {
-      heading: 'Questions',
-      paragraphs: [
-        `To ask about your data or request deletion, email ${email}.`,
-      ],
-      links: [{ label: email, href: `mailto:${email}` }],
-    },
-  ],
-}
-
-export const pages = [about, contact, privacy]
+export const pages = [about]
 
 function absolute(href: string) {
   return href.startsWith('/') ? `${siteUrl}${href}` : href
