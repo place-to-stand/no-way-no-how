@@ -26,12 +26,14 @@ export const tracks = [
   {
     name: 'Faster & Faster',
     released: '2025',
+    datePublished: '2025-05-02',
     kind: 'Single',
     href: 'https://nowaynohow.bandcamp.com/track/faster-faster',
   },
   {
     name: 'Build Our Home',
     released: '2024',
+    datePublished: '2024-04',
     kind: 'Single',
     href: 'https://nowaynohow.bandcamp.com/track/build-our-home',
   },

@@ -12,7 +12,7 @@ const fontSans = FontSans({
   variable: '--font-sans',
 })
 
-const title = 'no way no how — indie rock from Austin, TX'
+const title = 'no way no how — indie rock band from Austin, TX'
 const description =
   "Melancholic Austin, TX indie rock by Jason Desiderio, for anyone who's moved cities or tried to slow down. Stream on Spotify, Apple Music, or Bandcamp."
 
