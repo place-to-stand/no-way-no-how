@@ -171,6 +171,7 @@ export default function Home() {
             <li key={t.name}>
               <a
                 href={t.href}
+                data-release={t.name}
                 className='group flex flex-col items-center gap-2'
                 target='_blank'
                 rel='noopener noreferrer'

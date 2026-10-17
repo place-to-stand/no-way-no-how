@@ -36,7 +36,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Page routes only: skip Next internals and anything with a file extension
-  // (llms.txt, sitemap.xml, images, audio).
-  matcher: '/((?!_next/|.*\\..*).*)',
+  // Page routes only: skip Next internals, the PostHog proxy, and anything
+  // with a file extension (llms.txt, sitemap.xml, images, audio).
+  matcher: '/((?!_next/|ingest/|.*\\..*).*)',
 }
