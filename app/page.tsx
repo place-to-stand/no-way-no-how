@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { tracks } from './lib/content'
+import { email, listenLinks, siteUrl, socialLinks, tracks } from './lib/content'
 import { groupLinkClass, linkClass } from './lib/link-styles'
 import BuildOurHome from './covers/build-our-home.jpg'
 import FasterAndFaster from './covers/faster-and-faster.jpg'
@@ -10,53 +10,64 @@ const covers = {
   'Build Our Home': BuildOurHome,
 }
 
+const groupId = `${siteUrl}/#band`
+
+// One graph so search engines and AI tools tie the site, the band, and the
+// releases to a single entity. The name is also a common phrase, so
+// alternateName and disambiguatingDescription help them tell us apart.
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'MusicGroup',
-  name: 'no way no how',
-  url: 'https://nowayno.how/',
-  image: 'https://nowayno.how/og-image.jpg',
-  description:
-    "Melancholic indie rock from Austin-based musician Jason Desiderio, for anyone who's moved cities or tried to slow down.",
-  genre: ['Indie Rock', 'Alternative'],
-  foundingLocation: {
-    '@type': 'Place',
-    name: 'Austin, Texas',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Austin',
-      addressRegion: 'TX',
-      addressCountry: 'US',
-    },
-  },
-  member: {
-    '@type': 'Person',
-    name: 'Jason Desiderio',
-    url: 'https://jasondesiderio.com/',
-    jobTitle: 'Musician and songwriter',
-    description:
-      'Austin, TX musician who writes and records no way no how with friends.',
-    sameAs: ['https://jasondesiderio.com/'],
-  },
-  email: 'jason@thegoodfornothings.club',
-  sameAs: [
-    'https://nowaynohow.bandcamp.com/',
-    'https://open.spotify.com/artist/0Hhn7jlCTbqNyAOrI458SR',
-    'https://music.apple.com/us/artist/no-way-no-how/1738953726',
-    'https://www.instagram.com/nowaynohowband/',
-  ],
-  track: [
+  '@graph': [
     {
-      '@type': 'MusicRecording',
-      name: 'Faster & Faster',
-      datePublished: '2025-05-02',
-      byArtist: { '@type': 'MusicGroup', name: 'no way no how' },
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: 'no way no how',
+      inLanguage: 'en-US',
+      about: { '@id': groupId },
+      publisher: { '@id': groupId },
     },
     {
-      '@type': 'MusicRecording',
-      name: 'Build Our Home',
-      datePublished: '2024-04',
-      byArtist: { '@type': 'MusicGroup', name: 'no way no how' },
+      '@type': 'MusicGroup',
+      '@id': groupId,
+      name: 'no way no how',
+      alternateName: ['No Way No How', 'No Way, No How', 'nowaynohow'],
+      disambiguatingDescription:
+        'Indie rock band from Austin, Texas, led by Jason Desiderio. Not the phrase "no way, no how" or any other artist or song with that title.',
+      url: `${siteUrl}/`,
+      image: `${siteUrl}/og-image.jpg`,
+      logo: `${siteUrl}/icon.png`,
+      description:
+        "Melancholic indie rock from Austin-based musician Jason Desiderio, for anyone who's moved cities or tried to slow down.",
+      genre: ['Indie Rock', 'Alternative'],
+      foundingLocation: {
+        '@type': 'Place',
+        name: 'Austin, Texas',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Austin',
+          addressRegion: 'TX',
+          addressCountry: 'US',
+        },
+      },
+      member: {
+        '@type': 'Person',
+        name: 'Jason Desiderio',
+        url: 'https://jasondesiderio.com/',
+        jobTitle: 'Musician and songwriter',
+        description:
+          'Austin, TX musician who writes and records no way no how with friends.',
+        sameAs: ['https://jasondesiderio.com/'],
+      },
+      email: email,
+      sameAs: [...listenLinks, ...socialLinks].map(l => l.href),
+      track: tracks.map(t => ({
+        '@type': 'MusicRecording',
+        name: t.name,
+        url: t.href,
+        datePublished: t.datePublished,
+        byArtist: { '@id': groupId },
+      })),
     },
   ],
 }

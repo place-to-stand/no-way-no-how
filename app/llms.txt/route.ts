@@ -26,6 +26,10 @@ ${tracks.map(t => `- [${t.name}](${t.href}) (${t.kind}, ${t.released})`).join('\
 ## Listen
 
 ${listenLinks.map(l => `- [${l.label}](${l.href})`).join('\n')}
+
+## Not to be confused with
+
+"no way no how" is also a common phrase, and other artists have songs with that title, including Tommy Nilsson (1981), René & Angela ("No How – No Way", 1985), Jocelyn Enriquez, and Blu. None of them are this band. Last.fm's "no way no how" page also mixes in a cover by a different act.
 `
   return new Response(body, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },

@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Analytics
 
-PostHog (project in the Place To Stand org) plus Vercel Analytics. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_POSTHOG_KEY`; analytics stays off without it, and always on localhost.
+PostHog ("No Way No How" project in The Good for Nothings Club org) plus Vercel Analytics. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_POSTHOG_KEY`; analytics stays off without it, and always on localhost.
 
 - Setup: `app/lib/analytics.ts`, loaded lazily from `instrumentation-client.ts`
 - Events go through the same-origin `/ingest` proxy (`next.config.mjs` rewrites) so ad blockers don't drop them
@@ -29,5 +29,6 @@ PostHog (project in the Place To Stand org) plus Vercel Analytics. Copy `.env.ex
 
 - Page metadata, Open Graph, and Twitter cards: `app/layout.tsx`
 - Share image: `public/og-image.jpg` (1200×630)
-- Structured data (schema.org `MusicGroup`): `app/page.tsx`
+- Structured data (schema.org `WebSite` + `MusicGroup` graph): `app/page.tsx`
+- `llms.txt` for AI tools: `app/llms.txt/route.ts`
 - `robots.txt` and `sitemap.xml`: `app/robots.ts`, `app/sitemap.ts`
