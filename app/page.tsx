@@ -63,7 +63,7 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-center gap-10 px-4 py-8 text-center md:gap-16 md:px-8'>
+    <main className='flex min-h-screen flex-col items-center justify-center gap-10 px-4 py-16 text-center md:gap-16 md:px-8 md:py-28'>
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{
