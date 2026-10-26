@@ -1,4 +1,10 @@
-import { email, listenLinks, siteUrl, tracks } from '../lib/content'
+import {
+  email,
+  listenLinks,
+  profileLinks,
+  siteUrl,
+  tracks,
+} from '../lib/content'
 
 export function GET() {
   const body = `# no way no how
@@ -26,6 +32,10 @@ ${tracks.map(t => `- [${t.name}](${t.href}) (${t.kind}, ${t.released})`).join('\
 ## Listen
 
 ${listenLinks.map(l => `- [${l.label}](${l.href})`).join('\n')}
+
+## Music databases
+
+${profileLinks.map(l => `- [${l.label}](${l.href})`).join('\n')}
 
 ## Not to be confused with
 

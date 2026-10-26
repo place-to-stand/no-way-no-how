@@ -1,5 +1,12 @@
 import Image from 'next/image'
-import { email, listenLinks, siteUrl, socialLinks, tracks } from './lib/content'
+import {
+  email,
+  listenLinks,
+  profileLinks,
+  siteUrl,
+  socialLinks,
+  tracks,
+} from './lib/content'
 import { groupLinkClass, linkClass } from './lib/link-styles'
 import BuildOurHome from './covers/build-our-home.jpg'
 import FasterAndFaster from './covers/faster-and-faster.jpg'
@@ -60,7 +67,9 @@ const jsonLd = {
         sameAs: ['https://jasondesiderio.com/'],
       },
       email: email,
-      sameAs: [...listenLinks, ...socialLinks].map(l => l.href),
+      sameAs: [...listenLinks, ...socialLinks, ...profileLinks].map(
+        l => l.href
+      ),
       track: tracks.map(t => ({
         '@type': 'MusicRecording',
         name: t.name,

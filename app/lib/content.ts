@@ -22,6 +22,14 @@ export const socialLinks: Link[] = [
   { label: 'Instagram', href: 'https://www.instagram.com/nowaynohowband/' },
 ]
 
+// Music databases that search engines and AI tools use to identify the band.
+export const profileLinks: Link[] = [
+  {
+    label: 'MusicBrainz',
+    href: 'https://musicbrainz.org/artist/7dc39513-ace5-44d2-9bbb-ffec7601471b',
+  },
+]
+
 export const tracks = [
   {
     name: 'Faster & Faster',
