@@ -19,10 +19,10 @@ const whiteLink = linkClass
 // Faster & Faster cover, where the two lines nearly touch.
 function CoverLogo() {
   return (
-    <h1 className='relative text-[13vw] leading-[0.78] font-thin tracking-tight text-[#f4f7fa] md:text-[9vw]'>
+    <h1 className='relative pt-[0.2em] text-[13vw] leading-[0.6] font-thin tracking-[-0.04em] text-[#f4f7fa] md:text-[9vw]'>
       <span
         aria-hidden='true'
-        className='absolute inset-0 -translate-x-[0.06em] -translate-y-[0.05em] opacity-40'
+        className='absolute inset-0 -translate-x-[0.1em] -translate-y-[0.07em] pt-[0.2em] opacity-40'
       >
         no way
         <br />
