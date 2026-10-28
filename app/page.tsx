@@ -260,8 +260,10 @@ export default function Home() {
         ))}
       </section>
 
-      <section className='flex flex-col-reverse gap-(--py) border-t border-white/15 px-(--px) py-(--py) md:flex-row md:items-start md:justify-between'>
-        <div className='flex flex-col gap-[31px] md:gap-[34px] md:[&>a:first-child]:mt-[0.224em] max-md:[&>a:last-child]:mb-[0.4167em]'>
+      {/* Links left, Spotify player right from 640, like the singles, so a
+          sideways phone doesn't stack them. */}
+      <section className='flex flex-col-reverse gap-(--py) border-t border-white/15 px-(--px) py-(--py) sm:flex-row sm:items-start sm:justify-between'>
+        <div className='flex flex-col gap-[31px] md:gap-[34px] sm:[&>a:first-child]:mt-[0.224em] max-sm:[&>a:last-child]:mb-[0.4167em]'>
           {allLinks.map(l => (
             <a
               key={l.label}
@@ -273,7 +275,7 @@ export default function Home() {
             </a>
           ))}
         </div>
-        <div className='w-full md:max-w-sm md:min-w-0 md:flex-1 lg:max-w-md'>
+        <div className='w-full sm:max-w-sm sm:min-w-0 sm:flex-1 lg:max-w-md'>
           <SpotifyEmbed />
         </div>
       </section>
