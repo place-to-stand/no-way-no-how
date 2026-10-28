@@ -6,9 +6,63 @@ import {
   allLinks,
   external,
   releases,
-  sweepInk,
   tagline,
 } from '../shared'
+
+type Release = (typeof releases)[number]
+
+// Phones: one column (cover, then number + title, then details) on the fluid
+// page padding. Tablet and laptop: text block left, cover right. From 1280: the
+// four-column strip.
+//
+// --t is the title size, stepped per layout: the largest that fits on one
+// line at the narrowest width of each step (40px phone from 360 wide, 52px
+// tablet, 72px from 1024). The number, details and gaps scale with it at
+// their desktop proportions (16, 14, 16 and 24 against 72), floored at 14px.
+// The four-column strip from 1280 uses the 24px grid gap after the number.
+const rowGrid =
+  'grid grid-cols-1 gap-3 px-(--px) py-(--py) [--t:40px] md:grid-cols-[1fr_auto] md:items-center md:gap-10 md:px-10 md:py-8 md:[--t:52px] lg:[--t:72px] xl:grid-cols-[auto_1fr_auto_16rem] xl:gap-6'
+
+function ReleaseRow({
+  r,
+  i,
+  decorative,
+}: {
+  r: Release
+  i: number
+  decorative?: boolean
+}) {
+  return (
+    <>
+      {/* Number + title share a line, details below. From 1280 up both
+          wrappers dissolve so each piece takes its own grid column. */}
+      <span className='flex flex-col gap-[calc(var(--t)/2)] lg:gap-[calc(var(--t)/3)] xl:contents'>
+        <span className='flex items-center gap-[calc(var(--t)*2/9)] xl:contents'>
+          <span
+            className={`${mono.className} text-[max(14px,calc(var(--t)*2/9))] font-medium opacity-60 [text-box:trim-both_cap_alphabetic]`}
+          >
+            {String(releases.length - i).padStart(2, '0')}
+          </span>
+          <span className='text-(length:--t) leading-none font-semibold tracking-tight [text-box:trim-both_cap_alphabetic]'>
+            {r.name}
+          </span>
+        </span>
+        <span
+          className={`${mono.className} text-[max(14px,calc(var(--t)*7/36))] font-medium uppercase opacity-70 [text-box:trim-both_cap_alphabetic]`}
+        >
+          {r.kind} / {r.datePublished}
+        </span>
+      </span>
+      <Image
+        src={r.cover}
+        alt={decorative ? '' : `${r.name} cover art`}
+        sizes='(min-width: 768px) 256px, 100vw'
+        quality={60}
+        className='order-first mb-3 aspect-square w-full object-cover md:order-none md:mb-0 md:w-60 xl:w-64'
+      />
+    </>
+  )
+}
 
 // White-fill link like Full bleed, but the fill leaves equal space above the
 // capitals and below the descenders
@@ -16,13 +70,15 @@ const whiteLink =
   '-mx-1 box-decoration-clone bg-linear-to-r from-white to-white bg-size-[100%_1px] bg-bottom bg-no-repeat px-1 pb-[0.15em] transition-[background-size,color] duration-200 ease-out hover:bg-size-[100%_calc(100%_-_0.1em)] hover:text-neutral-950 focus-visible:bg-size-[100%_calc(100%_-_0.1em)] focus-visible:text-neutral-950'
 
 // The cover logo from Poster, set on the left. The line height matches the
-// Faster & Faster cover, where the two lines nearly touch.
+// Faster & Faster cover, where the two lines nearly touch. Trimmed to the
+// x-height and pushed down by the ghost's offset, so the ghost's letter tops
+// sit one padding from the top, matching the bottom text's baseline gap.
 function CoverLogo() {
   return (
-    <h1 className='relative pt-[0.2em] text-[13vw] leading-[0.6] font-thin tracking-[-0.04em] text-[#f4f7fa] md:text-[9vw]'>
+    <h1 className='relative mt-[0.07em] text-[max(76px,8.83vw+1.5rem)] leading-[0.68] font-thin tracking-[-0.04em] text-[#f4f7fa] [text-box:trim-both_ex_alphabetic]'>
       <span
         aria-hidden='true'
-        className='absolute inset-0 -translate-x-[0.1em] -translate-y-[0.07em] pt-[0.2em] opacity-40'
+        className='absolute inset-0 -translate-x-[0.1em] -translate-y-[0.07em] opacity-40 [text-box:trim-both_ex_alphabetic]'
       >
         no way
         <br />
@@ -39,8 +95,8 @@ function CoverLogo() {
 
 export default function Mashup() {
   return (
-    <div className='bg-neutral-950 text-white'>
-      <section className='relative flex min-h-svh flex-col justify-between overflow-hidden p-6 md:p-10'>
+    <div className='bg-neutral-950 text-white [--px:clamp(24px,1.524vw+18.06px,40px)] [--py:clamp(38.4px,2.438vw+28.89px,64px)]'>
+      <section className='relative flex min-h-svh flex-col justify-between overflow-hidden px-(--px) py-(--py)'>
         <Image
           src={JasonGuitar}
           alt='Jason Desiderio of no way no how playing electric guitar'
@@ -51,9 +107,11 @@ export default function Mashup() {
         />
         <div className='absolute inset-0 bg-linear-to-b from-black/30 via-black/0 to-black/60' />
         <CoverLogo />
-        <div className='relative flex flex-col justify-between gap-4 text-lg font-semibold text-[#f4f7fa] md:flex-row md:items-end md:text-2xl'>
-          <p className='max-w-md'>{tagline}</p>
-          <p className='md:text-right'>
+        <div className='relative flex flex-col justify-between gap-(--py) text-lg font-semibold text-[#f4f7fa] md:text-2xl lg:flex-row lg:items-end'>
+          <p className='max-w-md [text-box:trim-both_cap_alphabetic]'>
+            {tagline}
+          </p>
+          <p className='[text-box:trim-both_cap_alphabetic] lg:text-right'>
             Jason Desiderio &amp; friends
             <br />
             Austin, TX
@@ -61,53 +119,44 @@ export default function Mashup() {
         </div>
       </section>
 
-      <section className='bg-[#82A6CA] text-neutral-950'>
+      {/* On hover a dark copy of the row is wiped in from the left, so each
+          letter's colour always matches the background behind it, even if
+          the pointer leaves mid-sweep. The fill and the divider both match
+          the footer black, so the divider blends into a hovered row. */}
+      <section className='divide-y divide-neutral-950 bg-[#82A6CA] text-neutral-950'>
         {releases.map((r, i) => (
           <a
             key={r.name}
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className={`${sweepInk} group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-neutral-950/20 px-6 py-8 md:grid-cols-[6rem_1fr_auto_16rem] md:px-10`}
+            className={`group relative block ${rowGrid}`}
           >
-            <span
-              className={`${mono.className} text-sm font-medium opacity-60`}
+            <ReleaseRow r={r} i={i} />
+            <div
+              aria-hidden='true'
+              className={`${rowGrid} pointer-events-none absolute inset-0 bg-neutral-950 text-[#e8eef5] transition-[clip-path] duration-500 ease-[cubic-bezier(.7,0,.2,1)] [clip-path:inset(0_100%_0_0)] group-hover:[clip-path:inset(0)] group-focus-visible:[clip-path:inset(0)] motion-reduce:transition-none`}
             >
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <span className='text-4xl font-semibold tracking-tight md:text-7xl'>
-              {r.name}
-            </span>
-            <span
-              className={`${mono.className} col-start-2 text-xs font-medium uppercase opacity-70 md:col-start-auto`}
-            >
-              {r.kind} / {r.datePublished}
-            </span>
-            <Image
-              src={r.cover}
-              alt={`${r.name} cover art`}
-              sizes='256px'
-              quality={60}
-              className='col-start-2 aspect-square w-40 object-cover md:col-start-auto md:w-64'
-            />
+              <ReleaseRow r={r} i={i} decorative />
+            </div>
           </a>
         ))}
       </section>
 
-      <section className='flex flex-col gap-12 px-6 pt-16 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pb-32'>
-        <div className='flex flex-col gap-4 md:gap-5'>
+      <section className='flex flex-col-reverse gap-(--py) border-t border-white/15 px-(--px) py-(--py) md:flex-row md:items-start md:justify-between'>
+        <div className='flex flex-col gap-[31px] md:gap-[34px] md:[&>a:first-child]:mt-[0.224em]'>
           {allLinks.map(l => (
             <a
               key={l.label}
               href={l.href}
               {...external(l.href)}
-              className='w-fit text-3xl font-bold md:text-5xl'
+              className='w-fit text-3xl font-bold whitespace-nowrap [text-box:trim-both_cap_alphabetic] md:text-4xl lg:text-5xl'
             >
               <span className={whiteLink}>{l.label}</span>
             </a>
           ))}
         </div>
-        <div className='w-full md:max-w-md'>
+        <div className='w-full md:max-w-sm md:min-w-0 md:flex-1 lg:max-w-md'>
           <SpotifyEmbed />
         </div>
       </section>

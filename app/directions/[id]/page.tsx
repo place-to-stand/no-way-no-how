@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 import { DirectionNav } from '../shared'
 import { directions } from '../list'
@@ -21,11 +22,19 @@ export function generateStaticParams() {
   return directions.map(d => ({ id: d.id }))
 }
 
-export default async function DirectionPage({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}) {
+type Params = Promise<{ id: string }>
+
+// Read the URL id inside Suspense so the shared App Shell doesn't depend on
+// one URL (Next.js "URL data outside of Suspense" insight)
+export default function DirectionPage({ params }: { params: Params }) {
+  return (
+    <Suspense fallback={<div className='min-h-svh bg-neutral-950' />}>
+      <Direction params={params} />
+    </Suspense>
+  )
+}
+
+async function Direction({ params }: { params: Params }) {
   const { id } = await params
   const Design = designs[id]
   if (!Design) notFound()

@@ -41,7 +41,7 @@ export const tracks = [
   {
     name: 'Build Our Home',
     released: '2024',
-    datePublished: '2024-04',
+    datePublished: '2024-04-12',
     kind: 'Single',
     href: 'https://nowaynohow.bandcamp.com/track/build-our-home',
   },
