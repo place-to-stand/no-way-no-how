@@ -197,10 +197,11 @@ export default function Home() {
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      {/* At least a screen tall, but the gap between the logo and the text
-          below it never closes, so on short screens (phones turned sideways)
-          the content sets the height and the hero grows past the screen. */}
-      <section className='relative flex min-h-svh flex-col justify-between gap-[calc(var(--py)*2)] overflow-hidden px-(--px) py-(--py)'>
+      {/* A screen tall, capped at 1200px so it doesn't fill very tall
+          monitors. The gap between the logo and the text below it never
+          closes, so on short screens (phones turned sideways) the content
+          sets the height and the hero grows past the screen. */}
+      <section className='relative flex min-h-[min(100svh,1200px)] flex-col justify-between gap-[calc(var(--py)*2)] overflow-hidden px-(--px) py-(--py)'>
         <Image
           src={JasonGuitar}
           alt='Jason Desiderio of no way no how playing electric guitar'
