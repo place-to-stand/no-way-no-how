@@ -45,10 +45,11 @@ export const metadata: Metadata = {
   },
 }
 
-// Tints the mobile browser UI to match the page background, which is
-// #82A6CA at ~73% opacity over white
+// Tints the mobile browser UI (the band behind the status bar) to match the
+// footer, neutral-950. Newer iOS Safari reads the body background instead,
+// so that matches too.
 export const viewport: Viewport = {
-  themeColor: '#A3BED8',
+  themeColor: '#0a0a0a',
   colorScheme: 'light',
 }
 
@@ -62,7 +63,7 @@ export default function RootLayout({
       <body
         className={cn(
           fontSans.variable,
-          'min-h-screen bg-[#82A6CABB] font-sans antialiased'
+          'min-h-screen bg-neutral-950 font-sans antialiased'
         )}
       >
         {children}
