@@ -1,13 +1,36 @@
 import Image from 'next/image'
-import { archivo, mono } from '../fonts'
 import {
   JasonGuitar,
   SpotifyEmbed,
   allLinks,
   external,
   releases,
+  sweepInk,
+  sweepLabel,
   tagline,
 } from '../shared'
+
+// The band name as it appears on the Faster & Faster cover: thin, lowercase,
+// with a faint copy set slightly up and to the left
+function CoverLogo() {
+  return (
+    <h1 className='relative text-right text-[17vw] leading-[0.82] font-thin tracking-tight text-[#f4f7fa] md:text-[13vw]'>
+      <span
+        aria-hidden='true'
+        className='absolute inset-0 -translate-x-[0.06em] -translate-y-[0.05em] opacity-40'
+      >
+        no way
+        <br />
+        no how
+      </span>
+      <span className='relative'>
+        no way
+        <br />
+        no how
+      </span>
+    </h1>
+  )
+}
 
 export default function Poster() {
   return (
@@ -21,14 +44,7 @@ export default function Poster() {
           preload
           className='object-cover opacity-90 mix-blend-multiply grayscale'
         />
-        {/* Wide but light: lowercase like the brand, regular weight */}
-        <h1
-          className={`${archivo.className} relative text-[15vw] leading-[0.85] font-normal tracking-tight text-[#e8eef5] [font-stretch:112%] md:text-[13vw]`}
-        >
-          no way
-          <br />
-          no how
-        </h1>
+        <CoverLogo />
         <div className='relative flex flex-col justify-between gap-4 text-sm text-[#e8eef5] md:flex-row md:items-end'>
           <p className='max-w-xs'>{tagline}</p>
           <p className='md:text-right'>
@@ -46,19 +62,17 @@ export default function Poster() {
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className='group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-neutral-950/20 px-6 py-8 transition-colors hover:bg-white/15 md:grid-cols-[6rem_1fr_auto_16rem] md:px-10'
+            className={`${sweepInk} group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-neutral-950/20 px-6 py-8 transition-colors md:grid-cols-[6rem_1fr_auto_16rem] md:px-10`}
           >
-            <span className={`${mono.className} text-sm opacity-60`}>
+            <span className='text-sm tabular-nums opacity-60'>
               {String(i + 1).padStart(2, '0')}
             </span>
             <span
-              className={`${archivo.className} text-4xl tracking-tight [font-stretch:112%] md:text-7xl`}
+              className={`${sweepLabel} text-4xl font-light tracking-tight md:text-7xl`}
             >
               {r.name}
             </span>
-            <span
-              className={`${mono.className} col-start-2 text-xs uppercase opacity-70 md:col-start-auto`}
-            >
+            <span className='col-start-2 text-xs tracking-widest uppercase opacity-70 md:col-start-auto'>
               {r.kind} / {r.released}
             </span>
             <Image
@@ -76,17 +90,15 @@ export default function Poster() {
         <div className='md:col-span-5'>
           <SpotifyEmbed />
         </div>
-        <ul
-          className={`${mono.className} flex flex-col text-sm md:col-span-5 md:col-start-8`}
-        >
+        <ul className='flex flex-col md:col-span-6 md:col-start-7'>
           {allLinks.map(l => (
             <li key={l.label}>
               <a
                 href={l.href}
                 {...external(l.href)}
-                className='flex justify-between border-b border-neutral-950/20 py-3 uppercase transition-colors hover:bg-white/15'
+                className={`${sweepInk} flex items-center justify-between border-b border-neutral-950/20 px-4 py-4 text-2xl transition-colors md:text-3xl`}
               >
-                <span>{l.label}</span>
+                <span className={sweepLabel}>{l.label}</span>
                 <span aria-hidden='true'>&rarr;</span>
               </a>
             </li>

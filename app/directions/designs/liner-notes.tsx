@@ -7,6 +7,8 @@ import {
   external,
   releases,
   tagline,
+  sweepBlue,
+  sweepLabel,
 } from '../shared'
 
 export default function LinerNotes() {
@@ -47,12 +49,14 @@ export default function LinerNotes() {
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className='group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-white/10 px-6 py-8 transition-colors hover:bg-white/5 md:grid-cols-[6rem_1fr_auto_16rem] md:px-10'
+            className={`${sweepBlue} group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-white/10 px-6 py-8 transition-colors md:grid-cols-[6rem_1fr_auto_16rem] md:px-10`}
           >
             <span className={`${mono.className} text-sm opacity-50`}>
               {String(i + 1).padStart(2, '0')}
             </span>
-            <span className='text-4xl font-semibold tracking-tight md:text-7xl'>
+            <span
+              className={`${sweepLabel} text-4xl font-semibold tracking-tight md:text-7xl`}
+            >
               {r.name}
             </span>
             <span
@@ -83,9 +87,9 @@ export default function LinerNotes() {
               <a
                 href={l.href}
                 {...external(l.href)}
-                className='flex justify-between border-b border-white/10 py-3 uppercase transition-colors hover:bg-white/5 hover:text-[#82A6CA]'
+                className={`${sweepBlue} flex justify-between border-b border-white/10 px-4 py-3 uppercase transition-colors`}
               >
-                <span>{l.label}</span>
+                <span className={sweepLabel}>{l.label}</span>
                 <span aria-hidden='true'>&rarr;</span>
               </a>
             </li>

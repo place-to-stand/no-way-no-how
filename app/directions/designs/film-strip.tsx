@@ -52,13 +52,8 @@ export default function FilmStrip() {
         <div aria-hidden='true' className='w-px shrink-0' />
       </div>
 
-      <p className='px-6 text-xs text-white/50 md:px-10'>
-        Scroll sideways &rarr;
-      </p>
-
-      <section className='mx-6 mt-16 mb-20 flex flex-col gap-6 bg-[#82A6CA] p-8 text-neutral-950 md:mx-10 md:flex-row md:items-end md:justify-between md:p-12'>
-        <p className='text-sm'>Listen &amp; follow</p>
-        <ul className='flex flex-wrap gap-x-8 gap-y-2'>
+      <section className='mx-6 mt-4 mb-20 bg-[#82A6CA] p-8 text-neutral-950 md:mx-10 md:p-12'>
+        <ul className='flex flex-wrap justify-between gap-x-8 gap-y-2'>
           {allLinks.map(l => (
             <li key={l.label}>
               <a

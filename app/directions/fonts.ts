@@ -1,9 +1,4 @@
-import { Archivo, JetBrains_Mono } from 'next/font/google'
+import { JetBrains_Mono } from 'next/font/google'
 
-// Heading fonts to try next to Outfit, per the crit's font-pairing note
+// Mono for small details, next to Outfit
 export const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap' })
-export const archivo = Archivo({
-  subsets: ['latin'],
-  axes: ['wdth'],
-  display: 'swap',
-})

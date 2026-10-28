@@ -61,3 +61,12 @@ export function DirectionNav({ id }: { id: string }) {
     </nav>
   )
 }
+
+// Hover fill that sweeps in from the left, with the label nudging right.
+// Put `sweepLabel` on the row's text so it moves with the fill.
+const sweepBase =
+  'group/sweep relative isolate overflow-hidden before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-500 before:ease-[cubic-bezier(.7,0,.2,1)] hover:before:scale-x-100 focus-visible:before:scale-x-100 motion-reduce:before:transition-none'
+export const sweepBlue = `${sweepBase} before:bg-[#82A6CA] hover:text-neutral-950 focus-visible:text-neutral-950`
+export const sweepInk = `${sweepBase} before:bg-neutral-950 hover:text-[#e8eef5] focus-visible:text-[#e8eef5]`
+export const sweepLabel =
+  'transition-transform duration-500 ease-[cubic-bezier(.7,0,.2,1)] motion-safe:group-hover/sweep:translate-x-2 motion-safe:group-focus-visible/sweep:translate-x-2'

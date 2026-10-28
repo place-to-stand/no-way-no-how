@@ -26,7 +26,7 @@ export default function SplitScreen() {
 
       <div className='flex flex-col gap-16 px-6 py-16 md:px-16 md:py-16'>
         <header className='flex flex-col gap-4'>
-          <h1 className='text-6xl leading-none font-semibold md:text-8xl'>
+          <h1 className='text-6xl leading-[0.8] font-semibold md:text-8xl'>
             no way
             <br />
             no how

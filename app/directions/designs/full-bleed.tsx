@@ -1,5 +1,11 @@
 import Image from 'next/image'
 import { linkClass } from '../../lib/link-styles'
+
+// The shared link style fills dark; on this dark page it fills white
+const whiteLink = linkClass
+  .replaceAll('from-neutral-950 to-neutral-950', 'from-white to-white')
+  .replaceAll('hover:text-white', 'hover:text-neutral-950')
+  .replaceAll('focus-visible:text-white', 'focus-visible:text-neutral-950')
 import {
   JasonGuitar,
   SpotifyEmbed,
@@ -30,24 +36,24 @@ export default function FullBleed() {
         </div>
       </section>
 
-      {/* Covers shown whole, white border and all */}
-      <section className='grid gap-6 px-6 py-16 md:grid-cols-2 md:gap-10 md:px-10 md:py-24'>
+      {/* Edge to edge, but the whole cover shows, white border and all */}
+      <section className='grid md:grid-cols-2'>
         {releases.map(r => (
           <a
             key={r.name}
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className='group flex flex-col gap-4'
+            className='group flex flex-col'
           >
             <Image
               src={r.cover}
               alt={`${r.name} cover art`}
               sizes='(min-width: 768px) 50vw, 100vw'
               quality={60}
-              className='aspect-square w-full object-contain transition duration-300 ease-out motion-safe:group-hover:-translate-y-1'
+              className='aspect-square w-full object-contain'
             />
-            <p className='text-sm'>
+            <p className='px-6 py-4 text-sm md:px-10'>
               <span className='font-semibold'>{r.name}</span>
               <span className='text-white/70'>
                 {' '}
@@ -58,7 +64,7 @@ export default function FullBleed() {
         ))}
       </section>
 
-      <section className='flex flex-col gap-12 px-6 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pb-32'>
+      <section className='flex flex-col gap-12 px-6 pt-16 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pb-32'>
         <div className='flex flex-col gap-3'>
           {allLinks.map(l => (
             <a
@@ -67,11 +73,7 @@ export default function FullBleed() {
               {...external(l.href)}
               className='w-fit text-3xl font-semibold md:text-5xl'
             >
-              <span
-                className={`${linkClass} from-white to-white hover:text-neutral-950`}
-              >
-                {l.label}
-              </span>
+              <span className={whiteLink}>{l.label}</span>
             </a>
           ))}
         </div>
