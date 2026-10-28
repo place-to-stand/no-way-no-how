@@ -154,6 +154,11 @@ function ReleaseRow({
 
 // White-fill link like Full bleed, but the fill leaves equal space above the
 // capitals and below the descenders
+// A link inside a sentence: a real text underline just under the letters,
+// exactly as wide as the word, that brightens and thickens on hover
+const inlineLink =
+  'underline decoration-white/60 decoration-1 underline-offset-[0.22em] transition-[text-decoration-color] duration-200 ease-out hover:decoration-white hover:decoration-2 focus-visible:decoration-white focus-visible:decoration-2'
+
 const whiteLink =
   '-mx-1 box-decoration-clone bg-linear-to-r from-white to-white bg-size-[100%_1px] bg-bottom bg-no-repeat px-1 pb-[0.15em] transition-[background-size,color] duration-200 ease-out hover:bg-size-[100%_calc(100%_-_0.1em)] hover:text-neutral-950 focus-visible:bg-size-[100%_calc(100%_-_0.1em)] focus-visible:text-neutral-950'
 
@@ -209,7 +214,7 @@ export default function Home() {
             <a
               href='https://jasondesiderio.com/'
               {...external('https://jasondesiderio.com/')}
-              className={whiteLink}
+              className={inlineLink}
             >
               Jason Desiderio
             </a>{' '}
