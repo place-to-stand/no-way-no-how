@@ -100,8 +100,7 @@ const jsonLd = {
 type Release = (typeof releases)[number]
 
 // Phones held upright: one column (cover, then number + title, then details)
-// on the fluid side padding, with twice the vertical padding so each single
-// fills more of the screen while scrolling. From 640 (phones turned sideways, small tablets):
+// on the fluid page padding. From 640 (phones turned sideways, small tablets):
 // text block left, a smaller cover right, so one cover never fills a short
 // screen. Tablet and laptop: the same with a bigger cover. From 1280: the
 // four-column strip.
@@ -112,7 +111,7 @@ type Release = (typeof releases)[number]
 // their desktop proportions (16, 14, 16 and 24 against 72), floored at 14px.
 // The four-column strip from 1280 uses the 24px grid gap after the number.
 const rowGrid =
-  'grid grid-cols-1 gap-3 px-(--px) py-[calc(var(--py)*2)] [--t:40px] sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8 sm:py-(--py) md:gap-10 md:px-10 md:py-8 md:[--t:52px] lg:[--t:72px] xl:grid-cols-[auto_1fr_auto_16rem] xl:gap-6'
+  'grid grid-cols-1 gap-3 px-(--px) py-(--py) [--t:40px] sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8 md:gap-10 md:px-10 md:py-8 md:[--t:52px] lg:[--t:72px] xl:grid-cols-[auto_1fr_auto_16rem] xl:gap-6'
 
 function ReleaseRow({
   r,
