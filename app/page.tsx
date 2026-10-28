@@ -256,7 +256,7 @@ export default function Home() {
       </section>
 
       <section className='flex flex-col-reverse gap-(--py) border-t border-white/15 px-(--px) py-(--py) md:flex-row md:items-start md:justify-between'>
-        <div className='flex flex-col gap-[31px] md:gap-[34px] md:[&>a:first-child]:mt-[0.224em]'>
+        <div className='flex flex-col gap-[31px] md:gap-[34px] md:[&>a:first-child]:mt-[0.224em] max-md:[&>a:last-child]:mb-[0.4167em]'>
           {allLinks.map(l => (
             <a
               key={l.label}
