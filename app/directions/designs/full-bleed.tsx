@@ -30,38 +30,36 @@ export default function FullBleed() {
         </div>
       </section>
 
-      <section className='grid md:grid-cols-2'>
+      {/* Covers shown whole, white border and all */}
+      <section className='grid gap-6 px-6 py-16 md:grid-cols-2 md:gap-10 md:px-10 md:py-24'>
         {releases.map(r => (
           <a
             key={r.name}
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className='group block'
+            className='group flex flex-col gap-4'
           >
-            <div className='relative aspect-square overflow-hidden'>
-              <Image
-                src={r.cover}
-                alt={`${r.name} cover art`}
-                fill
-                sizes='(min-width: 768px) 50vw, 100vw'
-                quality={60}
-                className='scale-[1.07] object-cover transition duration-700 ease-out motion-safe:group-hover:scale-[1.1]'
-              />
-            </div>
-            <div className='px-6 py-4 text-sm md:px-10'>
+            <Image
+              src={r.cover}
+              alt={`${r.name} cover art`}
+              sizes='(min-width: 768px) 50vw, 100vw'
+              quality={60}
+              className='aspect-square w-full object-contain transition duration-300 ease-out motion-safe:group-hover:-translate-y-1'
+            />
+            <p className='text-sm'>
               <span className='font-semibold'>{r.name}</span>
               <span className='text-white/70'>
                 {' '}
                 &middot; {r.kind}, {r.released}
               </span>
-            </div>
+            </p>
           </a>
         ))}
       </section>
 
-      <section className='grid gap-10 px-6 py-20 md:grid-cols-[1fr_2fr] md:px-10 md:py-32'>
-        <div className='flex flex-col gap-3 text-lg'>
+      <section className='flex flex-col gap-12 px-6 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pb-32'>
+        <div className='flex flex-col gap-3'>
           {allLinks.map(l => (
             <a
               key={l.label}
@@ -77,7 +75,9 @@ export default function FullBleed() {
             </a>
           ))}
         </div>
-        <SpotifyEmbed height={452} />
+        <div className='w-full md:max-w-md'>
+          <SpotifyEmbed />
+        </div>
       </section>
     </div>
   )

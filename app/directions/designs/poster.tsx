@@ -1,11 +1,18 @@
 import Image from 'next/image'
-import { archivo } from '../fonts'
-import { JasonGuitar, allLinks, external, releases, tagline } from '../shared'
+import { archivo, mono } from '../fonts'
+import {
+  JasonGuitar,
+  SpotifyEmbed,
+  allLinks,
+  external,
+  releases,
+  tagline,
+} from '../shared'
 
 export default function Poster() {
   return (
     <div className='bg-[#82A6CA] text-neutral-950'>
-      <section className='relative flex min-h-svh flex-col justify-between overflow-hidden p-4 md:p-8'>
+      <section className='relative flex min-h-svh flex-col justify-between overflow-hidden p-6 md:p-10'>
         <Image
           src={JasonGuitar}
           alt='Jason Desiderio of no way no how playing electric guitar'
@@ -14,8 +21,9 @@ export default function Poster() {
           preload
           className='object-cover opacity-90 mix-blend-multiply grayscale'
         />
+        {/* Wide but light: lowercase like the brand, regular weight */}
         <h1
-          className={`${archivo.className} relative text-[19vw] leading-[0.8] font-black tracking-tighter text-[#e8eef5] uppercase [font-stretch:62%]`}
+          className={`${archivo.className} relative text-[15vw] leading-[0.85] font-normal tracking-tight text-[#e8eef5] [font-stretch:112%] md:text-[13vw]`}
         >
           no way
           <br />
@@ -31,48 +39,60 @@ export default function Poster() {
         </div>
       </section>
 
-      <section className='px-4 py-16 md:px-8 md:py-28'>
-        {releases.map(r => (
+      <section className='border-t border-neutral-950/20'>
+        {releases.map((r, i) => (
           <a
             key={r.name}
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className='group grid items-center gap-6 border-t-2 border-neutral-950 py-8 md:grid-cols-[1fr_auto]'
+            className='group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-neutral-950/20 px-6 py-8 transition-colors hover:bg-white/15 md:grid-cols-[6rem_1fr_auto_16rem] md:px-10'
           >
-            <div>
-              <p className='text-sm'>
-                {r.kind} &middot; {r.released}
-              </p>
-              <h2
-                className={`${archivo.className} text-[12vw] leading-[0.85] font-black tracking-tight uppercase [font-stretch:62%] transition-colors group-hover:text-white md:text-[9vw]`}
-              >
-                {r.name}
-              </h2>
-            </div>
+            <span className={`${mono.className} text-sm opacity-60`}>
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <span
+              className={`${archivo.className} text-4xl tracking-tight [font-stretch:112%] md:text-7xl`}
+            >
+              {r.name}
+            </span>
+            <span
+              className={`${mono.className} col-start-2 text-xs uppercase opacity-70 md:col-start-auto`}
+            >
+              {r.kind} / {r.released}
+            </span>
             <Image
               src={r.cover}
               alt={`${r.name} cover art`}
-              sizes='(min-width: 768px) 360px, 90vw'
+              sizes='256px'
               quality={60}
-              className='aspect-square w-full object-cover md:w-[360px]'
+              className='col-start-2 aspect-square w-40 object-cover md:col-start-auto md:w-64'
             />
           </a>
         ))}
       </section>
 
-      <footer className='flex flex-wrap gap-x-8 gap-y-2 border-t-2 border-neutral-950 px-4 py-10 md:px-8'>
-        {allLinks.map(l => (
-          <a
-            key={l.label}
-            href={l.href}
-            {...external(l.href)}
-            className={`${archivo.className} text-4xl font-black uppercase [font-stretch:62%] hover:text-white md:text-6xl`}
-          >
-            {l.label}
-          </a>
-        ))}
-      </footer>
+      <section className='grid gap-10 px-6 py-20 md:grid-cols-12 md:px-10'>
+        <div className='md:col-span-5'>
+          <SpotifyEmbed />
+        </div>
+        <ul
+          className={`${mono.className} flex flex-col text-sm md:col-span-5 md:col-start-8`}
+        >
+          {allLinks.map(l => (
+            <li key={l.label}>
+              <a
+                href={l.href}
+                {...external(l.href)}
+                className='flex justify-between border-b border-neutral-950/20 py-3 uppercase transition-colors hover:bg-white/15'
+              >
+                <span>{l.label}</span>
+                <span aria-hidden='true'>&rarr;</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   )
 }

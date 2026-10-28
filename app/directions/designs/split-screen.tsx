@@ -9,6 +9,7 @@ import {
   tagline,
 } from '../shared'
 
+// One spacing rhythm on the right: 64px between sections, 16px inside them
 export default function SplitScreen() {
   return (
     <div className='bg-[#dfe7ef] md:grid md:grid-cols-2'>
@@ -23,8 +24,8 @@ export default function SplitScreen() {
         />
       </div>
 
-      <div className='flex flex-col gap-24 px-6 py-16 md:px-16 md:py-24'>
-        <header className='flex flex-col gap-6'>
+      <div className='flex flex-col gap-16 px-6 py-16 md:px-16 md:py-16'>
+        <header className='flex flex-col gap-4'>
           <h1 className='text-6xl leading-none font-semibold md:text-8xl'>
             no way
             <br />
@@ -36,41 +37,44 @@ export default function SplitScreen() {
           </p>
         </header>
 
-        {releases.map(r => (
-          <a
-            key={r.name}
-            href={r.href}
-            data-release={r.name}
-            {...external(r.href)}
-            className='group flex flex-col gap-4'
-          >
-            <Image
-              src={r.cover}
-              alt={`${r.name} cover art`}
-              sizes='(min-width: 768px) 40vw, 90vw'
-              quality={60}
-              className='aspect-square w-full object-cover shadow-xl transition duration-300 motion-safe:group-hover:-translate-y-1'
-            />
-            <div className='flex items-baseline justify-between text-sm'>
-              <span className='text-2xl font-semibold'>{r.name}</span>
-              <span className='opacity-70'>
-                {r.kind}, {r.released}
-              </span>
-            </div>
-          </a>
-        ))}
-
-        <SpotifyEmbed />
-
-        <ul className='flex flex-wrap gap-x-6 gap-y-2 pb-16 text-lg'>
-          {allLinks.map(l => (
-            <li key={l.label}>
-              <a href={l.href} {...external(l.href)} className={linkClass}>
-                {l.label}
-              </a>
-            </li>
+        <section className='grid grid-cols-2 gap-6'>
+          {releases.map(r => (
+            <a
+              key={r.name}
+              href={r.href}
+              data-release={r.name}
+              {...external(r.href)}
+              className='group flex flex-col gap-3'
+            >
+              <Image
+                src={r.cover}
+                alt={`${r.name} cover art`}
+                sizes='(min-width: 768px) 20vw, 45vw'
+                quality={60}
+                className='aspect-square w-full object-cover shadow-lg transition duration-300 motion-safe:group-hover:-translate-y-1'
+              />
+              <div className='flex flex-col text-sm'>
+                <span className='text-lg font-semibold'>{r.name}</span>
+                <span className='opacity-70'>
+                  {r.kind}, {r.released}
+                </span>
+              </div>
+            </a>
           ))}
-        </ul>
+        </section>
+
+        <section className='flex flex-col gap-4'>
+          <SpotifyEmbed />
+          <ul className='flex flex-wrap gap-x-6 gap-y-2 text-lg'>
+            {allLinks.map(l => (
+              <li key={l.label}>
+                <a href={l.href} {...external(l.href)} className={linkClass}>
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   )

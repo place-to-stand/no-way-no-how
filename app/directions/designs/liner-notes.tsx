@@ -13,14 +13,10 @@ export default function LinerNotes() {
   return (
     <div className='bg-[#0d1117] text-[#d7e1ec]'>
       <header
-        className={`${mono.className} grid grid-cols-2 gap-4 border-b border-white/10 px-6 py-4 text-xs uppercase md:grid-cols-4 md:px-10`}
+        className={`${mono.className} flex justify-between border-b border-white/10 px-6 py-4 text-xs uppercase md:px-10`}
       >
         <span>no way no how</span>
         <span className='opacity-50'>Austin, TX</span>
-        <span className='hidden opacity-50 md:block'>Indie rock</span>
-        <span className='hidden text-right opacity-50 md:block'>
-          {releases.length} releases
-        </span>
       </header>
 
       <section className='grid gap-10 px-6 py-16 md:grid-cols-12 md:px-10 md:py-24'>
@@ -41,11 +37,6 @@ export default function LinerNotes() {
             preload
             className='object-cover grayscale-[40%] hue-rotate-[170deg] saturate-[60%] sepia-[20%]'
           />
-          <span
-            className={`${mono.className} absolute top-3 left-3 text-[11px] uppercase opacity-80`}
-          >
-            Fig. 01 &mdash; Jason Desiderio, guitar
-          </span>
         </div>
       </section>
 
@@ -81,30 +72,25 @@ export default function LinerNotes() {
       </section>
 
       <section className='grid gap-10 px-6 py-20 md:grid-cols-12 md:px-10'>
-        <div className='md:col-span-7'>
-          <SpotifyEmbed height={452} />
+        <div className='md:col-span-5'>
+          <SpotifyEmbed />
         </div>
-        <dl
-          className={`${mono.className} flex flex-col gap-4 text-sm md:col-span-4 md:col-start-9`}
+        <ul
+          className={`${mono.className} flex flex-col text-sm md:col-span-5 md:col-start-8`}
         >
           {allLinks.map(l => (
-            <div
-              key={l.label}
-              className='flex justify-between border-b border-white/10 pb-2'
-            >
-              <dt className='uppercase opacity-50'>{l.label}</dt>
-              <dd>
-                <a
-                  href={l.href}
-                  {...external(l.href)}
-                  className='hover:text-[#82A6CA]'
-                >
-                  &rarr;
-                </a>
-              </dd>
-            </div>
+            <li key={l.label}>
+              <a
+                href={l.href}
+                {...external(l.href)}
+                className='flex justify-between border-b border-white/10 py-3 uppercase transition-colors hover:bg-white/5 hover:text-[#82A6CA]'
+              >
+                <span>{l.label}</span>
+                <span aria-hidden='true'>&rarr;</span>
+              </a>
+            </li>
           ))}
-        </dl>
+        </ul>
       </section>
     </div>
   )

@@ -10,8 +10,9 @@ export default function FilmStrip() {
         <p className='max-w-sm text-white/70'>{tagline}</p>
       </header>
 
-      {/* One row of big frames that scrolls sideways and snaps */}
-      <div className='flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 md:gap-6 md:px-10 [&::-webkit-scrollbar]:hidden'>
+      {/* One row of big frames that scrolls sideways and snaps. The scroll
+          padding keeps each snapped frame on the page's left margin. */}
+      <div className='flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto px-6 pb-12 md:scroll-px-10 md:gap-6 md:px-10 [&::-webkit-scrollbar]:hidden'>
         <figure className='relative aspect-[1600/1060] h-[62svh] shrink-0 snap-start'>
           <Image
             src={JasonGuitar}
@@ -47,24 +48,30 @@ export default function FilmStrip() {
             </span>
           </a>
         ))}
-        <div className='flex h-[62svh] w-[min(80vw,28rem)] shrink-0 snap-start flex-col justify-end gap-3 bg-[#82A6CA] p-8 text-neutral-950'>
-          <p className='mb-auto text-sm'>Listen &amp; follow</p>
-          {allLinks.map(l => (
-            <a
-              key={l.label}
-              href={l.href}
-              {...external(l.href)}
-              className='w-fit text-3xl font-semibold md:text-4xl'
-            >
-              <span className={linkClass}>{l.label}</span>
-            </a>
-          ))}
-        </div>
+        {/* Trailing spacer so the last frame can snap with a right margin */}
+        <div aria-hidden='true' className='w-px shrink-0' />
       </div>
 
-      <p className='mt-auto px-6 pt-12 pb-20 text-xs text-white/50 md:px-10'>
+      <p className='px-6 text-xs text-white/50 md:px-10'>
         Scroll sideways &rarr;
       </p>
+
+      <section className='mx-6 mt-16 mb-20 flex flex-col gap-6 bg-[#82A6CA] p-8 text-neutral-950 md:mx-10 md:flex-row md:items-end md:justify-between md:p-12'>
+        <p className='text-sm'>Listen &amp; follow</p>
+        <ul className='flex flex-wrap gap-x-8 gap-y-2'>
+          {allLinks.map(l => (
+            <li key={l.label}>
+              <a
+                href={l.href}
+                {...external(l.href)}
+                className='text-3xl font-semibold md:text-4xl'
+              >
+                <span className={linkClass}>{l.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   )
 }

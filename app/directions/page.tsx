@@ -9,7 +9,7 @@ export default function DirectionsIndex() {
         Homepage directions
       </h1>
       <p className='mt-4 text-lg text-balance'>
-        Ten ways to make the homepage wider, bigger and more visual, from the
+        Ways to make the homepage wider, bigger and more visual, from the
         October design crit. Rough on purpose: pick the ones that excite you.
       </p>
       <ol className='mt-12 flex flex-col gap-8'>

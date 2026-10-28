@@ -53,7 +53,7 @@ export function DirectionNav({ id }: { id: string }) {
         &larr;
       </Link>
       <Link href='/directions' className='underline-offset-4 hover:underline'>
-        {i + 1}/{directions.length} &middot; {directions[i].name}
+        {directions[i].id} &middot; {directions[i].name}
       </Link>
       <Link href={`/directions/${next.id}`} aria-label='Next direction'>
         &rarr;
