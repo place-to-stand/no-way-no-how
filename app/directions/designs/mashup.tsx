@@ -6,6 +6,7 @@ import {
   allLinks,
   external,
   releases,
+  sweepInk,
   tagline,
 } from '../shared'
 
@@ -15,30 +16,36 @@ const whiteLink = linkClass
   .replaceAll('hover:text-white', 'hover:text-neutral-950')
   .replaceAll('focus-visible:text-white', 'focus-visible:text-neutral-950')
 
-// The cover logo from Poster, set on the left. The line height matches the
-// Faster & Faster cover, where the two lines nearly touch.
+// The cover logo from Poster, set on the left and spaced like the Faster &
+// Faster cover: the lines nearly touch, and the y of "way" drops into the w of
+// "how". The second line runs a touch wider so the w reaches past the y.
+function Lines() {
+  return (
+    <>
+      <span className='block tracking-[-0.045em]'>no way</span>
+      <span className='block tracking-[-0.02em]'>no how</span>
+    </>
+  )
+}
+
 function CoverLogo() {
   return (
-    <h1 className='relative pt-[0.2em] text-[13vw] leading-[0.6] font-thin tracking-[-0.04em] text-[#f4f7fa] md:text-[9vw]'>
+    <h1 className='relative pt-[0.2em] text-[13vw] leading-[0.54] font-thin text-[#f4f7fa] md:text-[9vw]'>
       <span
         aria-hidden='true'
         className='absolute inset-0 -translate-x-[0.1em] -translate-y-[0.07em] pt-[0.2em] opacity-40'
       >
-        no way
-        <br />
-        no how
+        <Lines />
       </span>
-      <span className='relative'>
-        no way
-        <br />
-        no how
+      <span className='relative block'>
+        <Lines />
       </span>
     </h1>
   )
 }
 
-// A quiet hover: the row darkens a shade, the title slides a little, an arrow
-// fades in, and the cover grows slightly.
+// Rows fill black from the left on hover. The text stays put; only an arrow
+// fades in.
 const ease = 'duration-300 ease-out motion-reduce:transition-none'
 
 export default function Mashup() {
@@ -72,14 +79,12 @@ export default function Mashup() {
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className={`group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-neutral-950/20 px-6 py-8 transition-colors md:grid-cols-[6rem_1fr_auto_16rem] md:px-10 ${ease} hover:bg-[#6f95bb] focus-visible:bg-[#6f95bb]`}
+            className={`${sweepInk} group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-neutral-950/20 px-6 py-8 md:grid-cols-[6rem_1fr_auto_16rem] md:px-10`}
           >
-            <span className='text-sm text-neutral-950/60 tabular-nums'>
+            <span className='text-sm tabular-nums opacity-60'>
               {String(i + 1).padStart(2, '0')}
             </span>
-            <span
-              className={`flex items-baseline gap-4 text-4xl font-light tracking-tight transition-transform md:text-7xl ${ease} motion-safe:group-hover:translate-x-2 motion-safe:group-focus-visible:translate-x-2`}
-            >
+            <span className='flex items-baseline gap-4 text-4xl font-light tracking-tight md:text-7xl'>
               {r.name}
               <span
                 aria-hidden='true'
@@ -88,9 +93,7 @@ export default function Mashup() {
                 &#8599;
               </span>
             </span>
-            <span
-              className={`col-start-2 text-xs tracking-widest text-neutral-950/70 uppercase transition-colors md:col-start-auto ${ease} group-hover:text-neutral-950`}
-            >
+            <span className='col-start-2 text-xs tracking-widest uppercase opacity-70 md:col-start-auto'>
               {r.kind} / {r.released}
             </span>
             <div className='col-start-2 w-40 overflow-hidden md:col-start-auto md:w-64'>
@@ -106,8 +109,8 @@ export default function Mashup() {
         ))}
       </section>
 
-      <section className='flex flex-col gap-12 px-6 pt-24 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pt-32 md:pb-32'>
-        <div className='flex flex-col gap-3'>
+      <section className='flex flex-col gap-12 px-6 pt-16 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pb-32'>
+        <div className='flex flex-col gap-6 md:gap-8'>
           {allLinks.map(l => (
             <a
               key={l.label}
