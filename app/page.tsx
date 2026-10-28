@@ -270,7 +270,7 @@ export default function Home() {
               key={l.label}
               href={l.href}
               {...external(l.href)}
-              className='w-fit text-3xl font-bold whitespace-nowrap [text-box:trim-both_cap_alphabetic] md:text-4xl lg:text-5xl'
+              className='w-fit text-3xl font-bold whitespace-nowrap [text-box:trim-both_cap_alphabetic] md:text-4xl'
             >
               <span className={whiteLink}>{l.label}</span>
             </a>
