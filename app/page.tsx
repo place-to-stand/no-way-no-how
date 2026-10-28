@@ -206,7 +206,14 @@ export default function Home() {
             {tagline}
           </p>
           <p className='[text-box:trim-both_cap_alphabetic] lg:text-right'>
-            Jason Desiderio &amp; friends
+            <a
+              href='https://jasondesiderio.com/'
+              {...external('https://jasondesiderio.com/')}
+              className={whiteLink}
+            >
+              Jason Desiderio
+            </a>{' '}
+            &amp; friends
             <br />
             Austin, TX
           </p>
