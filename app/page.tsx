@@ -99,8 +99,10 @@ const jsonLd = {
 
 type Release = (typeof releases)[number]
 
-// Phones: one column (cover, then number + title, then details) on the fluid
-// page padding. Tablet and laptop: text block left, cover right. From 1280: the
+// Phones held upright: one column (cover, then number + title, then details)
+// on the fluid page padding. From 640 (phones turned sideways, small tablets):
+// text block left, a smaller cover right, so one cover never fills a short
+// screen. Tablet and laptop: the same with a bigger cover. From 1280: the
 // four-column strip.
 //
 // --t is the title size, stepped per layout: the largest that fits on one
@@ -109,7 +111,7 @@ type Release = (typeof releases)[number]
 // their desktop proportions (16, 14, 16 and 24 against 72), floored at 14px.
 // The four-column strip from 1280 uses the 24px grid gap after the number.
 const rowGrid =
-  'grid grid-cols-1 gap-3 px-(--px) py-(--py) [--t:40px] md:grid-cols-[1fr_auto] md:items-center md:gap-10 md:px-10 md:py-8 md:[--t:52px] lg:[--t:72px] xl:grid-cols-[auto_1fr_auto_16rem] xl:gap-6'
+  'grid grid-cols-1 gap-3 px-(--px) py-(--py) [--t:40px] sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8 md:gap-10 md:px-10 md:py-8 md:[--t:52px] lg:[--t:72px] xl:grid-cols-[auto_1fr_auto_16rem] xl:gap-6'
 
 function ReleaseRow({
   r,
@@ -144,9 +146,9 @@ function ReleaseRow({
       <Image
         src={r.cover}
         alt={decorative ? '' : `${r.name} cover art`}
-        sizes='(min-width: 768px) 256px, 100vw'
+        sizes='(min-width: 640px) 256px, 100vw'
         quality={60}
-        className='order-first mb-3 aspect-square w-full object-cover md:order-none md:mb-0 md:w-60 xl:w-64'
+        className='order-first mb-3 aspect-square w-full object-cover sm:order-none sm:mb-0 sm:w-48 md:w-60 xl:w-64'
       />
     </>
   )
@@ -195,7 +197,10 @@ export default function Home() {
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <section className='relative flex min-h-svh flex-col justify-between overflow-hidden px-(--px) py-(--py)'>
+      {/* At least a screen tall, but the gap between the logo and the text
+          below it never closes, so on short screens (phones turned sideways)
+          the content sets the height and the hero grows past the screen. */}
+      <section className='relative flex min-h-svh flex-col justify-between gap-[calc(var(--py)*2)] overflow-hidden px-(--px) py-(--py)'>
         <Image
           src={JasonGuitar}
           alt='Jason Desiderio of no way no how playing electric guitar'
