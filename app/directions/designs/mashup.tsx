@@ -19,7 +19,7 @@ const whiteLink = linkClass
 // Faster & Faster cover, where the two lines nearly touch.
 function CoverLogo() {
   return (
-    <h1 className='relative text-[17vw] leading-[0.78] font-thin tracking-tight text-[#f4f7fa] md:text-[13vw]'>
+    <h1 className='relative text-[13vw] leading-[0.78] font-thin tracking-tight text-[#f4f7fa] md:text-[9vw]'>
       <span
         aria-hidden='true'
         className='absolute inset-0 -translate-x-[0.06em] -translate-y-[0.05em] opacity-40'
@@ -37,8 +37,8 @@ function CoverLogo() {
   )
 }
 
-// A quiet hover: the title slides a little, an arrow fades in, and the cover
-// grows slightly. No fill.
+// A quiet hover: the row darkens a shade, the title slides a little, an arrow
+// fades in, and the cover grows slightly.
 const ease = 'duration-300 ease-out motion-reduce:transition-none'
 
 export default function Mashup() {
@@ -65,16 +65,16 @@ export default function Mashup() {
         </div>
       </section>
 
-      <section>
+      <section className='bg-[#82A6CA] text-neutral-950'>
         {releases.map((r, i) => (
           <a
             key={r.name}
             href={r.href}
             data-release={r.name}
             {...external(r.href)}
-            className='group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-white/15 px-6 py-8 md:grid-cols-[6rem_1fr_auto_16rem] md:px-10'
+            className={`group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-neutral-950/20 px-6 py-8 transition-colors md:grid-cols-[6rem_1fr_auto_16rem] md:px-10 ${ease} hover:bg-[#6f95bb] focus-visible:bg-[#6f95bb]`}
           >
-            <span className='text-sm text-white/50 tabular-nums'>
+            <span className='text-sm text-neutral-950/60 tabular-nums'>
               {String(i + 1).padStart(2, '0')}
             </span>
             <span
@@ -89,7 +89,7 @@ export default function Mashup() {
               </span>
             </span>
             <span
-              className={`col-start-2 text-xs tracking-widest text-white/60 uppercase transition-colors md:col-start-auto ${ease} group-hover:text-white`}
+              className={`col-start-2 text-xs tracking-widest text-neutral-950/70 uppercase transition-colors md:col-start-auto ${ease} group-hover:text-neutral-950`}
             >
               {r.kind} / {r.released}
             </span>
@@ -106,7 +106,7 @@ export default function Mashup() {
         ))}
       </section>
 
-      <section className='flex flex-col gap-12 px-6 pt-16 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pb-32'>
+      <section className='flex flex-col gap-12 px-6 pt-24 pb-24 md:flex-row md:items-start md:justify-between md:px-10 md:pt-32 md:pb-32'>
         <div className='flex flex-col gap-3'>
           {allLinks.map(l => (
             <a
