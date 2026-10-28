@@ -35,4 +35,9 @@ export const directions: Direction[] = [
     name: 'Film strip',
     idea: 'The photo and covers sit in one sideways-scrolling strip of large frames, with links in a band below.',
   },
+  {
+    id: '11',
+    name: 'Mashup',
+    idea: 'The full-color photo from Full bleed with the cover logo from Poster on the left. Poster-style release rows with a quiet hover, and the Full bleed footer.',
+  },
 ]

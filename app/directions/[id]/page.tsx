@@ -6,6 +6,7 @@ import Poster from '../designs/poster'
 import SplitScreen from '../designs/split-screen'
 import LinerNotes from '../designs/liner-notes'
 import FilmStrip from '../designs/film-strip'
+import Mashup from '../designs/mashup'
 
 const designs: Record<string, React.ComponentType> = {
   '1': FullBleed,
@@ -13,6 +14,7 @@ const designs: Record<string, React.ComponentType> = {
   '3': SplitScreen,
   '6': LinerNotes,
   '7': FilmStrip,
+  '11': Mashup,
 }
 
 export function generateStaticParams() {
