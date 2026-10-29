@@ -162,7 +162,7 @@ const inlineLink =
   'underline decoration-white/60 decoration-1 underline-offset-[0.22em] transition-[text-decoration-color] duration-200 ease-out hover:decoration-white hover:decoration-2 focus-visible:decoration-white focus-visible:decoration-2'
 
 const whiteLink =
-  '-mr-1 box-decoration-clone bg-linear-to-r from-white to-white bg-size-[100%_1px] bg-bottom bg-no-repeat pr-1 pb-[0.15em] transition-[background-size,color] duration-200 ease-out hover:bg-size-[100%_calc(100%_-_0.1em)] hover:text-neutral-950 focus-visible:bg-size-[100%_calc(100%_-_0.1em)] focus-visible:text-neutral-950'
+  '-mx-1 box-decoration-clone bg-linear-to-r from-white to-white bg-size-[100%_1px] bg-bottom bg-no-repeat px-1 pb-[0.15em] transition-[background-size,color] duration-200 ease-out hover:bg-size-[100%_calc(100%_-_0.1em)] hover:text-neutral-950 focus-visible:bg-size-[100%_calc(100%_-_0.1em)] focus-visible:text-neutral-950'
 
 // The cover logo from Poster, set on the left. The line height matches the
 // Faster & Faster cover, where the two lines nearly touch. Trimmed to the
@@ -265,7 +265,7 @@ export default function Home() {
           sideways phone doesn't stack them. Side by side, the gap doubles, so
           the player narrows as the page nears the width where they stack. */}
       <section className='flex flex-col-reverse gap-(--py) border-t border-white/15 px-(--px) py-(--py) sm:flex-row sm:items-start sm:justify-between sm:gap-[calc(var(--py)*2)]'>
-        <div className='flex flex-col gap-[31px] md:gap-[34px] sm:[&>a:first-child]:mt-[0.224em] max-sm:[&>a:last-child]:mb-[0.4167em]'>
+        <div className='ml-1 flex flex-col gap-[31px] md:gap-[34px] sm:[&>a:first-child]:mt-[0.224em] max-sm:[&>a:last-child]:mb-[0.4167em]'>
           {allLinks.map(l => (
             <a
               key={l.label}
