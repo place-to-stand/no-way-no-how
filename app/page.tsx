@@ -265,7 +265,7 @@ export default function Home() {
           sideways phone doesn't stack them. Side by side, the gap doubles, so
           the player narrows as the page nears the width where they stack. */}
       <section className='flex flex-col-reverse gap-(--py) border-t border-white/15 px-(--px) py-(--py) sm:flex-row sm:items-start sm:justify-between sm:gap-[calc(var(--py)*2)]'>
-        <div className='flex flex-col gap-[31px] md:gap-[34px] sm:[&>a:first-child]:mt-[0.224em] max-sm:[&>a:last-child]:mb-[0.4167em]'>
+        <div className='ml-1 flex flex-col gap-[31px] md:gap-[34px] sm:[&>a:first-child]:mt-[0.224em] max-sm:[&>a:last-child]:mb-[0.4167em]'>
           {allLinks.map(l => (
             <a
               key={l.label}
