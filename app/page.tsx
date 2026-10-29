@@ -162,7 +162,7 @@ const inlineLink =
   'underline decoration-white/60 decoration-1 underline-offset-[0.22em] transition-[text-decoration-color] duration-200 ease-out hover:decoration-white hover:decoration-2 focus-visible:decoration-white focus-visible:decoration-2'
 
 const whiteLink =
-  '-mx-1 box-decoration-clone bg-linear-to-r from-white to-white bg-size-[100%_1px] bg-bottom bg-no-repeat px-1 pb-[0.15em] transition-[background-size,color] duration-200 ease-out hover:bg-size-[100%_calc(100%_-_0.1em)] hover:text-neutral-950 focus-visible:bg-size-[100%_calc(100%_-_0.1em)] focus-visible:text-neutral-950'
+  '-mr-1 box-decoration-clone bg-linear-to-r from-white to-white bg-size-[100%_1px] bg-bottom bg-no-repeat pr-1 pb-[0.15em] transition-[background-size,color] duration-200 ease-out hover:bg-size-[100%_calc(100%_-_0.1em)] hover:text-neutral-950 focus-visible:bg-size-[100%_calc(100%_-_0.1em)] focus-visible:text-neutral-950'
 
 // The cover logo from Poster, set on the left. The line height matches the
 // Faster & Faster cover, where the two lines nearly touch. Trimmed to the
